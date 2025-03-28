@@ -230,6 +230,13 @@ code {
     width: 6vw
 }
 
+.project_section ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* 카드 사이 간격 */
+    padding: 0;
+}
 .project_section {
     margin: 0;
     padding: 0
@@ -246,19 +253,20 @@ code {
 }
 
 .comp_section {
-    display: inline-block;
-    width: 50%
+    width: 45%;
+    list-style: none;
 }
 
 .comp_section a {
     display: block;
-    margin: 5px;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .comp_section a .screen {
     overflow: hidden;
-    position: relative
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
 .comp_section a .screen .textDeco {
@@ -276,8 +284,10 @@ code {
 }
 
 .comp_section a .screen img {
-    transition: all .5s ease 0s;
-    width: 100%
+    width: 100%;
+    height: 300px; /* 고정 높이 */
+    object-fit: cover; /* 비율 맞춰 자르기 */
+    transition: transform 0.5s ease;
 }
 
 .comp_section a:hover .hoverNone {
@@ -326,8 +336,8 @@ code {
 }
 
 .standard {
-    /*position: absolute;*/
-    top: 50%;
+    position: absolute;
+    top: 80%;
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
@@ -377,7 +387,8 @@ code {
 .header_section .header_sub .header_logo {
     font: inherit;
     font-style: italic;
-    margin: 0
+    margin: 0;
+    color: black;
 }
 
 .header_section .header_sub .header_logo:hover {
@@ -454,7 +465,6 @@ ul {
 }
 
 a {
-    color: #fff;
     text-decoration: none
 }
 
@@ -492,31 +502,59 @@ a {
 }
 
 .pjt_img {
-    border: 2px solid #000;
-    box-sizing: border-box;
-    margin: 100px auto;
-    overflow: hidden;
-    position: relative;
-    width: 90%
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 20px;
+    background-color: #f9f9f9;  /* 약한 회색 배경 */
+    border: 2px dashed #ccc;     /* 점선 테두리 */
+    border-radius: 12px;
+    margin-top: 50px;
+}
+.img_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.img_group img {
+    width: 100%;
+    max-width: 500px;  /* 기존보다 반 정도로 줄이기 */
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #333;  /* 얇은 검은색 테두리 */
+}
+.title_p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .pjt_img ul {
     display: flex;
-    font-size: 0;
-    list-style: none;
-    padding: 0;
-    transition: all 1s ease;
-    width: 400%
+    transition: transform 0.5s ease-in-out;
+    width: 200%; /* 슬라이드 수 * 100% */
 }
 
 .pjt_img ul .img_section {
-    margin: 0;
-    width: 25%
+    width: 100%;
+    flex: 0 0 100%;
 }
 
 .pjt_img ul .img_section img {
     object-fit: scale-down;
-    width: 100%
+    /*width: 50%*/
 }
 
 .footer_section {
@@ -553,7 +591,18 @@ a {
     transition: transform 0.5s ease-in-out;
 }
 
-.content_section {
+.content_section1 {
     width: 100%;
     flex: 0 0 100%;
+    margin: 0px 210px;
+}
+.content_section2 {
+    width: 100%;
+    flex: 0 0 100%;
+    margin: 0px -140px;
+}
+.content_section3 {
+    width: 100%;
+    flex: 0 0 100%;
+    margin: 0px 180px;
 }
