@@ -11,6 +11,7 @@
             --header-bg: #333;
             --header-text: #fff;
             --post-bg: #fff;
+            --accent: #007acc;
         }
 
         body.dark-mode {
@@ -19,6 +20,7 @@
             --header-bg: #111;
             --header-text: #ddd;
             --post-bg: #2a2a2a;
+            --accent: #66d9ef;
         }
 
         body {
@@ -38,9 +40,9 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
+        .logo svg {
+            height: 32px;
+            fill: var(--header-text);
         }
 
         header nav {
@@ -94,7 +96,7 @@
         }
 
         .social-icons a:hover {
-            color: #007acc;
+            color: var(--accent);
         }
 
         .slider {
@@ -135,10 +137,15 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             gap: 20px;
             align-items: flex-start;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
         .post img {
@@ -190,7 +197,11 @@
 </head>
 <body>
 <header>
-	<div class="logo"><a href="#" style="color: var(--header-text); text-decoration: none;">MyLogo</a></div>
+	<div class="logo">
+		<a href="#">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12l18-12v24z"/></svg>
+		</a>
+	</div>
 	<nav>
 		<a href="#project1">프로젝트 1</a>
 		<a href="#project2">프로젝트 2</a>
@@ -202,7 +213,7 @@
 	<img src="profile.jpg" alt="프로필 사진">
 	<div class="profile-text">
 		<h2>당신의 이름</h2>
-		<p>개발자 | 포트폴리오 블로그</p>
+		<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
 		<div class="contact">
 			<p>📞 전화번호: 010-1234-5678</p>
 			<p>✉️ 이메일: your.email@example.com</p>
