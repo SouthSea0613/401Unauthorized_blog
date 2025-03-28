@@ -47,18 +47,23 @@
 
         .profile-info {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 20px;
             padding: 20px;
             background-color: var(--post-bg);
-            text-align: center;
+            text-align: left;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .profile-info img {
             border-radius: 50%;
             width: 100px;
             height: 100px;
-            margin-bottom: 10px;
+        }
+
+        .profile-text {
+            max-width: 500px;
         }
 
         .contact {
@@ -124,9 +129,16 @@
             .slides img {
                 height: 200px;
             }
+            .profile-info {
+                flex-direction: column;
+                text-align: center;
+            }
             .profile-info img {
                 width: 80px;
                 height: 80px;
+            }
+            .profile-text {
+                max-width: 100%;
             }
         }
 	</style>
@@ -142,12 +154,14 @@
 
 <div class="profile-info">
 	<img src="profile.jpg" alt="프로필 사진">
-	<h2>당신의 이름</h2>
-	<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
-	<div class="contact">
-		<p>📞 전화번호: 010-1234-5678</p>
-		<p>✉️ 이메일: your.email@example.com</p>
-		<p>🐙 깃허브: <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
+	<div class="profile-text">
+		<h2>당신의 이름</h2>
+		<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
+		<div class="contact">
+			<p>📞 전화번호: 010-1234-5678</p>
+			<p>✉️ 이메일: your.email@example.com</p>
+			<p>🐙 깃허브: <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
+		</div>
 	</div>
 </div>
 
