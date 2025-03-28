@@ -18,7 +18,7 @@
             --bg-color: #1e1e1e;
             --text-color: #f5f5f5;
             --header-bg: #111;
-            --header-text: #ddd;
+            --header-text: #66d9ef;
             --post-bg: #2a2a2a;
             --accent: #66d9ef;
         }
@@ -42,7 +42,15 @@
 
         .logo svg {
             height: 32px;
-            fill: var(--header-text);
+            fill: currentColor;
+            transition: fill 0.3s;
+        }
+
+        .logo a {
+            color: var(--header-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         header nav {
