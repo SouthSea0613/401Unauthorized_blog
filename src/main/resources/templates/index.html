@@ -175,6 +175,66 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--header-bg);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .mobile-nav a {
+            margin: 5px 0;
+            color: var(--header-text);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+        footer {
+            background: var(--post-bg);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+            border-top: 1px solid #ccc;
+        }
+
+        .resume-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resume-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .two-column {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .two-column ul {
+            flex: 1;
+            min-width: 250px;
+        }
 	</style>
 </head>
 <body>
@@ -188,6 +248,12 @@
 		<a href="#project2">프로젝트 2</a>
 		<a href="#project3">프로젝트 3</a>
 	</nav>
+	<div class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</div>
+	<div class="mobile-nav" id="mobileNav">
+		<a href="#project1">프로젝트 1</a>
+		<a href="#project2">프로젝트 2</a>
+		<a href="#project3">프로젝트 3</a>
+	</div>
 </header>
 
 <section class="profile-info">
@@ -248,27 +314,54 @@
 </section>
 
 <section class="content">
-	<h2>기술 스택</h2>
-	<ul>
-		<li>JavaScript (ES6+), TypeScript</li>
-		<li>React, Vue, Node.js, Express</li>
-		<li>MongoDB, MySQL</li>
-		<li>Git, GitHub, Docker</li>
-		<li>Figma, Adobe XD</li>
-	</ul>
+	<div class="resume-section">
+		<h2>기술 스택</h2>
+		<div class="two-column">
+			<ul>
+				<li><strong>프론트엔드:</strong> JavaScript (ES6+), TypeScript, React, Vue</li>
+				<li><strong>백엔드:</strong> Node.js, Express</li>
+				<li><strong>데이터베이스:</strong> MongoDB, MySQL</li>
+			</ul>
+			<ul>
+				<li><strong>도구:</strong> Git, GitHub, Docker</li>
+				<li><strong>디자인:</strong> Figma, Adobe XD</li>
+			</ul>
+		</div>
 
-	<h2>교육</h2>
-	<ul>
-		<li>멋쟁이사자처럼 프론트엔드 스쿨 수료 (2023)</li>
-		<li>FastCampus 풀스택 부트캠프 (2022)</li>
-	</ul>
+		<h2>교육</h2>
+		<ul>
+			<li><strong>멋쟁이사자처럼 프론트엔드 스쿨 수료</strong> (2023)</li>
+			<li><strong>FastCampus 풀스택 부트캠프</strong> (2022)</li>
+		</ul>
 
-	<h2>경력</h2>
-	<ul>
-		<li>ABC소프트웨어 (2023~현재) - 프론트엔드 개발자</li>
-		<li>XYZ 스타트업 (2021~2023) - 웹 퍼블리셔 & UI 디자이너</li>
-	</ul>
+		<h2>경력</h2>
+		<ul>
+			<li><strong>ABC소프트웨어</strong> (2023~현재) - 프론트엔드 개발자</li>
+			<li><strong>XYZ 스타트업</strong> (2021~2023) - 웹 퍼블리셔 & UI 디자이너</li>
+		</ul>
+	</div>
 </section>
+
+<footer>
+	<p>&copy; 2024 홍길동. All rights reserved.</p>
+	<p>“경험은 최고의 스승이다.”</p>
+	<p><a href="mailto:hong@example.com">hong@example.com</a></p>
+	<p id="last-updated"></p>
+	<section class="content">
+		<div class="resume-section">
+			<h2>버전 관리</h2>
+			<ul>
+				<li><strong>v1.0</strong> - 초기 이력서 레이아웃 구성 (2024.03)</li>
+				<li><strong>v1.1</strong> - 프로젝트 추가, 모바일 메뉴 도입, 다크모드 기능 (2024.03)</li>
+				<li><strong>v1.2</strong> - 인쇄 최적화 및 스크롤 애니메이션 효과 적용 (2024.03)</li>
+			</ul>
+
+			<h2>피드백</h2>
+			<p>이 포트폴리오에 대한 의견이나 제안이 있다면 아래 링크를 통해 전달해주세요.</p>
+			<p><a href="https://forms.gle/your-form-id" target="_blank">📝 피드백 제출하기</a></p>
+		</div>
+	</section>
+</footer>
 
 <script>
 	function toggleDarkMode() {
@@ -303,7 +396,7 @@
 	searchBar.style.border = '1px solid #ccc';
 	searchBar.addEventListener('input', e => filterProjects(e.target.value));
 
-	document.querySelector('.content').prepend(searchBar);
+	// 제거된 검색창 기능
 
 	// 인쇄 최적화
 	const style = document.createElement('style');
@@ -329,6 +422,11 @@
 		el.classList.add('fade-in');
 		observer.observe(el);
 	});
+	function toggleMobileMenu() {
+		const nav = document.getElementById('mobileNav');
+		nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+	}
+	document.getElementById("last-updated").textContent = `최종 업데이트: ${new Date().toLocaleDateString('ko-KR')}`;
 </script>
 </body>
 </html>
