@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/css/index.css">
+	<title>개인 포트폴리오 블로그</title>
 </head>
 
 <body>
-    <h1>index.html</h1>
+<header>
+	<div class="profile">
+		<img src="profile.jpg" alt="프로필 사진">
+		<div>
+			<h2>당신의 이름</h2>
+			<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
+		</div>
+	</div>
+	<nav>
+		<a href="#project1">프로젝트 1</a>
+		<a href="#project2">프로젝트 2</a>
+		<a href="#project3">프로젝트 3</a>
+	</nav>
+</header>
+
+<div class="slider">
+	<div class="slides" id="slides">
+		<img src="image1.jpg" alt="배너 이미지 1">
+		<img src="image2.jpg" alt="배너 이미지 2">
+		<img src="image3.jpg" alt="배너 이미지 3">
+		<img src="image4.jpg" alt="배너 이미지 4">
+	</div>
+</div>
+
+<div class="content">
+	<div class="post">
+		<h3>게시글 제목 1</h3>
+		<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
+	</div>
+	<div class="post">
+		<h3>게시글 제목 2</h3>
+		<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
+	</div>
+</div>
+
+<script>
+	let currentIndex = 0;
+	const slides = document.getElementById('slides');
+	const totalSlides = slides.children.length;
+
+	function showNextSlide() {
+		currentIndex = (currentIndex + 1) % totalSlides;
+		slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+	}
+
+	setInterval(showNextSlide, 3000);
+</script>
 </body>
 </html>
