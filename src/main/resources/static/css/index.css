@@ -1,0 +1,256 @@
+.slides {
+    display: flex;
+    width: calc(100% * 3);
+}
+
+.slides img {
+    flex: 0 0 100%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --header-bg: #ffffff;
+    --header-text: #000000;
+    --post-bg: #f7f7f7;
+    --accent: #000000;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #f5f5f5;
+    --header-bg: #111111;
+    --header-text: #ffffff;
+    --post-bg: #2a2a2a;
+    --accent: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    transition: all 0.3s ease;
+    --header-padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo svg {
+    height: 32px;
+    fill: currentColor;
+}
+
+.logo a {
+    color: var(--header-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: var(--header-text);
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    background-color: var(--post-bg);
+    border-radius: 12px;
+    margin: 40px 20px;
+}
+
+.profile-info img {
+    border-radius: 8px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.contact p, .social-icons a {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.social-icons a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.slider {
+    display: block;
+    overflow: hidden;
+    margin: 0 auto 40px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.post {
+    background: var(--post-bg);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+}
+
+.post img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.post-text h3 {
+    margin: 0 0 10px;
+}
+
+.post-text p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.dark-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .post {
+        flex-direction: column;
+    }
+
+    .post img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: var(--header-bg);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.mobile-nav a {
+    margin: 5px 0;
+    color: var(--header-text);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+footer {
+    background: var(--post-bg);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+}
+
+.resume-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resume-section ul li {
+    margin-bottom: 8px;
+}
+
+.two-column {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.two-column ul {
+    flex: 1;
+    min-width: 250px;
+}
+
+.post:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+}
+
+.post {
+    transition: all 0.3s ease;
+}
