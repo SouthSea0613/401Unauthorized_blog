@@ -5,48 +5,55 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>개인 포트폴리오 블로그</title>
 	<style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
         :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --header-bg: #ffffff;
-            --header-text: #000000;
-            --post-bg: #f9f9f9;
-            --accent: #000000;
+            --bg-color: #0a0a0a;
+            --text-color: #00ffcc;
+            --header-bg: linear-gradient(90deg, #0d0d0d, #1a1a1a);
+            --header-text: #ff00ff;
+            --post-bg: #111111;
+            --accent: #ff00ff;
+            --glow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
 
         body.dark-mode {
-            --bg-color: #111;
-            --text-color: #eee;
-            --header-bg: #1a1a1a;
-            --header-text: #fff;
-            --post-bg: #1c1c1c;
-            --accent: #999;
+            --bg-color: #000000;
+            --text-color: #00ffff;
+            --header-bg: linear-gradient(90deg, #000000, #222222);
+            --header-text: #ff00ff;
+            --post-bg: #1a1a1a;
+            --accent: #ff00ff;
+            --glow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
         }
 
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
+            background-image:
+                    radial-gradient(circle at 20% 20%, rgba(255,0,255,0.1), transparent 70%),
+                    radial-gradient(circle at 80% 80%, rgba(0,255,255,0.1), transparent 70%);
+            background-repeat: no-repeat;
             transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: var(--header-bg);
+            background: var(--header-bg);
             color: var(--header-text);
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #ccc;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
         }
 
         .logo svg {
-            height: 32px;
+            height: 36px;
             fill: currentColor;
             transition: fill 0.3s;
+            filter: drop-shadow(var(--glow));
         }
 
         .logo a {
@@ -56,15 +63,12 @@
             align-items: center;
         }
 
-        header nav {
-            display: flex;
-        }
-
         header nav a {
             color: var(--header-text);
             margin-left: 20px;
             text-decoration: none;
             font-weight: 600;
+            text-shadow: var(--glow);
         }
 
         .profile-info {
@@ -75,12 +79,7 @@
             background-color: var(--post-bg);
             border-radius: 12px;
             margin: 20px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-info:hover {
-            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
         }
 
         .profile-info img {
@@ -88,21 +87,17 @@
             width: 160px;
             height: 160px;
             object-fit: cover;
+            box-shadow: var(--glow);
         }
 
-        .profile-text {
-            flex: 1;
-        }
-
-        .contact {
-            margin-top: 10px;
-            font-size: 14px;
+        .contact p, .social-icons a {
+            text-shadow: var(--glow);
         }
 
         .social-icons a {
             margin-right: 10px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-color);
             transition: color 0.3s;
         }
@@ -112,7 +107,6 @@
         }
 
         .slider {
-            position: relative;
             max-width: 100%;
             height: 300px;
             overflow: hidden;
@@ -120,9 +114,8 @@
 
         .slides {
             display: flex;
-            transition: transform 0.5s ease-in-out;
             width: 400%;
-            animation: slide 12s infinite;
+            animation: slide 12s infinite ease-in-out;
         }
 
         @keyframes slide {
@@ -137,6 +130,7 @@
             width: 100vw;
             height: 300px;
             object-fit: cover;
+            filter: brightness(1.2) contrast(1.2);
         }
 
         .content {
@@ -146,15 +140,14 @@
         .post {
             background: var(--post-bg);
             margin-bottom: 20px;
-            padding: 0;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(0,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .post:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255,0,255,0.4);
         }
 
         .post a {
@@ -171,10 +164,11 @@
             object-fit: cover;
             border-radius: 6px;
             flex-shrink: 0;
+            box-shadow: var(--glow);
         }
 
-        .post-text {
-            flex: 1;
+        .post-text h3, .post-text p {
+            text-shadow: var(--glow);
         }
 
         .dark-toggle {
@@ -184,10 +178,10 @@
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
-            background: var(--header-bg);
-            color: var(--header-text);
+            background: var(--accent);
+            color: #fff;
             cursor: pointer;
-            z-index: 999;
+            box-shadow: 0 0 10px var(--accent);
         }
 
         @media (max-width: 768px) {
