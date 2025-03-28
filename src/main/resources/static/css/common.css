@@ -175,7 +175,22 @@ code {
 }
 
 .none {
-    visibility: hidden
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    padding: 40px 0; /* 위아래 여백 추가 */
+}
+.none img {
+    width: 23%; /* 이미지 크기 조정 */
+    border-radius: 10px; /* 선택: 이미지 둥글게 */
+}
+
+.profile_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .profile_section {
@@ -199,7 +214,7 @@ code {
 }
 
 .textStyle {
-    margin: 10%
+    margin: 10px 0;  /* 여기 중요! */
 }
 
 .textStyle span {
@@ -280,20 +295,19 @@ code {
     margin: 100px 0
 }
 
-.about_section .about_sub {
+.about_sub {
     height: 60vh;
     margin: 0 auto;
-    overflow: hidden;
     position: relative;
     width: 80%
 }
 
 .about_section .about_sub ul {
     display: flex;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    transition: all 1s ease;
+    /*font-size: 0;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    transition: transform 0.5s ease-in-out;
     width: 300%
 }
 
@@ -312,31 +326,27 @@ code {
 }
 
 .standard {
-    height: 43px;
-    margin: 0 auto;
-    position: absolute;
-    top: 45%;
-    width: 26px
+    /*position: absolute;*/
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    z-index: 10;
 }
 
-.standard .img {
-    width: 100%
+.standard img {
+    width: 100%;
+    height: auto;
 }
 
 .prev_btn {
-    left: 20px;
-    right: auto
-}
-
-.next_btn, .prev_btn {
-    cursor: pointer;
-    z-index: 2
+    left: 0;
 }
 
 .next_btn {
-    left: auto;
-    right: 20px
+    right: 0;
 }
+
 
 .disabled {
     opacity: .4;
@@ -526,3 +536,24 @@ a {
 }
 
 /*# sourceMappingURL=main.0bcc141e.css.map*/
+
+.hidden-on-load {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.hidden-on-load.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.about_sub ul {
+    display: flex;
+    width: 300%; /* 이미지가 3개니까 100% * 3 */
+    transition: transform 0.5s ease-in-out;
+}
+
+.content_section {
+    width: 100%;
+    flex: 0 0 100%;
+}
