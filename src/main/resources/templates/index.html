@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="icon" type="image/png" href="favicon.png" />
+	<meta name="description" content="홍길동의 프론트엔드 포트폴리오 이력서입니다. 프로젝트와 기술 스택, 경력을 확인하세요." />
+	<meta property="og:title" content="홍길동 포트폴리오" />
+	<meta property="og:description" content="프론트엔드 개발자 홍길동의 이력서와 프로젝트 모음." />
+	<meta property="og:image" content="thumbnail.jpg" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="홍길동 포트폴리오" />
+	<meta name="twitter:description" content="프론트엔드 개발자 홍길동의 이력서와 프로젝트 모음." />
+	<meta name="twitter:image" content="thumbnail.jpg" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>포트폴리오 이력서</title>
 	<link rel="stylesheet" href="/css/index.css">
 </head>
@@ -11,7 +21,7 @@
 
 <header>
 	<div class="logo">
-		<a href="#" style="font-weight: 600; font-size: 18px; color: var(--header-text); text-decoration: none;">South_Sea</a>
+		<a href="/" style="font-weight: 600; font-size: 18px; color: var(--header-text); text-decoration: none;">South_Sea</a>
 	</div>
 	<nav>
 		<a href="#project1">프로젝트 1</a>
@@ -29,17 +39,16 @@
 <section class="profile-info">
 	<img src="profile.jpg" alt="프로필 사진">
 	<div class="profile-text">
-		<h2>홍길동</h2>
+		<h2>김남해</h2>
 		<p>풀스택 개발자 | 사용성 중심의 프론트엔드 설계자</p>
 		<div class="contact">
-			<p>📞 010-1234-5678</p>
-			<p>✉️ hong@example.com</p>
+			<p>📞 010-2895-7823</p>
+			<p>✉️ tksz0613@gmail.com</p>
 			<p>📄 <a href="resume.pdf" target="_blank">이력서 다운로드</a></p>
 		</div>
 		<div class="social-icons">
-			<a href="https://github.com/hongdev" target="_blank">GitHub</a>
-			<a href="https://linkedin.com/in/hongdev" target="_blank">LinkedIn</a>
-			<a href="mailto:hong@example.com">Email</a>
+			<a href="https://github.com/SouthSea0613" target="_blank">GitHub</a>
+			<a href="mailto:tksz0613@gmail.com">Email</a>
 		</div>
 	</div>
 </section>
@@ -53,7 +62,7 @@
 </section>
 
 <section class="content">
-	<a href="#" class="post" style="text-decoration: none; color: inherit;">
+	<a href="#" class="post" target="_blank" style="text-decoration: none; color: inherit;">
 		<img src="thumb_resume1.jpg" alt="프로젝트 썸네일 1">
 		<div class="post-text">
 			<h3>내부 관리 시스템 구축</h3>
@@ -137,7 +146,6 @@
 	function toggleDarkMode() {
 		document.body.classList.toggle('dark-mode');
 	}
-
 	// 슬라이드 자동 전환
 	let currentSlide = 0;
 	const slides = document.querySelector('.slides');
@@ -149,17 +157,13 @@
 		slides.style.transition = 'transform 1.5s ease';
 	}, 6000);
 
-	// 프로젝트 필터링 제거됨
-
-	// 인쇄 최적화
 	const style = document.createElement('style');
 	style.media = 'print';
 	style.innerHTML = `
     .dark-toggle, input[type="search"], .slider, nav { display: none !important; }
     body { background: white !important; color: black !important; }
     a { color: black !important; text-decoration: none !important; }
-    .post { page-break-inside: avoid; }
-  `;
+    .post { page-break-inside: avoid; }`;
 	document.head.appendChild(style);
 	// 스크롤 시 fade-in 효과
 	const fadeEls = document.querySelectorAll('.post, .profile-info, section.content');
@@ -169,20 +173,18 @@
 				entry.target.classList.add('visible');
 			}
 		});
-	}, {threshold: 0.1});
+	}, { threshold: 0.1 });
 
 	fadeEls.forEach(el => {
 		el.classList.add('fade-in');
 		observer.observe(el);
 	});
-
 	function toggleMobileMenu() {
 		const nav = document.getElementById('mobileNav');
 		nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 	}
-
 	document.getElementById("last-updated").textContent = `최종 업데이트: ${new Date().toLocaleDateString('ko-KR')}`;
-	// 헤더 스크롤 축소 애니메이션
+
 	const header = document.querySelector('header');
 	let lastScrollY = window.scrollY;
 
