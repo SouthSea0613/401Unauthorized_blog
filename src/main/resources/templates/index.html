@@ -7,7 +7,7 @@
 	<style>
         .slides {
             display: flex;
-            width: 300%;
+            width: calc(100% * 3);
         }
         .slides img {
             flex: 0 0 100%;
@@ -41,6 +41,11 @@
         }
 
         header {
+            transition: all 0.3s ease;
+            --header-padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
             background-color: var(--header-bg);
             color: var(--header-text);
             padding: 20px;
@@ -144,12 +149,15 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            padding: 10px 15px;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: 600;
             border: 1px solid var(--accent);
             background: transparent;
             color: var(--accent);
             border-radius: 4px;
             cursor: pointer;
+            z-index: 1000;
         }
 
         @media (max-width: 768px) {
@@ -235,10 +243,20 @@
             flex: 1;
             min-width: 250px;
         }
+        .post:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+
+        .post {
+            transition: all 0.3s ease;
+        }
 	</style>
 </head>
 <body>
-<button class="dark-toggle" onclick="toggleDarkMode()">🌗</button>
+<button class="dark-toggle" onclick="toggleDarkMode()">다크모드</button>
+
 <header>
 	<div class="logo">
 		<a href="#" style="font-weight: 600; font-size: 18px; color: var(--header-text); text-decoration: none;">South_Sea</a>
@@ -283,34 +301,34 @@
 </section>
 
 <section class="content">
-	<div class="post">
+	<a href="#" class="post" style="text-decoration: none; color: inherit;">
 		<img src="thumb_resume1.jpg" alt="프로젝트 썸네일 1">
 		<div class="post-text">
 			<h3>내부 관리 시스템 구축</h3>
 			<p>사내 업무 효율화를 위한 CRUD 기반 웹앱 개발. React, Node.js, MongoDB 사용.</p>
 		</div>
-	</div>
-	<div class="post">
+	</a>
+	<a href="#" class="post" style="text-decoration: none; color: inherit;">
 		<img src="thumb_resume2.jpg" alt="프로젝트 썸네일 2">
 		<div class="post-text">
 			<h3>고객 포털 리디자인</h3>
 			<p>사용자 경험 개선 중심의 프론트엔드 리디자인. Figma로 프로토타입 설계 후 Vue.js로 구현.</p>
 		</div>
-	</div>
-	<div class="post">
+	</a>
+	<a href="#" class="post" style="text-decoration: none; color: inherit;">
 		<img src="thumb_resume3.jpg" alt="프로젝트 썸네일 3">
 		<div class="post-text">
 			<h3>모바일 커머스 앱 개발</h3>
 			<p>React Native 기반 쇼핑 앱 제작. 사용자 인증, 결제 연동 및 푸시 알림 기능 구현.</p>
 		</div>
-	</div>
-	<div class="post">
+	</a>
+	<a href="#" class="post" style="text-decoration: none; color: inherit;">
 		<img src="thumb_resume4.jpg" alt="프로젝트 썸네일 4">
 		<div class="post-text">
 			<h3>실시간 채팅 시스템</h3>
 			<p>Socket.IO를 활용한 실시간 채팅 플랫폼 구축. 그룹 채팅, 알림, 이모지 지원.</p>
 		</div>
-	</div>
+	</a>
 </section>
 
 <section class="content">
@@ -378,25 +396,7 @@
 		slides.style.transition = 'transform 1.5s ease';
 	}, 6000);
 
-	// 프로젝트 필터링
-	const filterProjects = (keyword) => {
-		document.querySelectorAll('.post').forEach(post => {
-			const text = post.innerText.toLowerCase();
-			post.style.display = text.includes(keyword.toLowerCase()) ? 'flex' : 'none';
-		});
-	};
-
-	// 검색 필드 생성
-	const searchBar = document.createElement('input');
-	searchBar.placeholder = '프로젝트 검색...';
-	searchBar.style.margin = '20px';
-	searchBar.style.padding = '10px';
-	searchBar.style.width = 'calc(100% - 40px)';
-	searchBar.style.fontSize = '16px';
-	searchBar.style.border = '1px solid #ccc';
-	searchBar.addEventListener('input', e => filterProjects(e.target.value));
-
-	// 제거된 검색창 기능
+	// 프로젝트 필터링 제거됨
 
 	// 인쇄 최적화
 	const style = document.createElement('style');
@@ -427,6 +427,21 @@
 		nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 	}
 	document.getElementById("last-updated").textContent = `최종 업데이트: ${new Date().toLocaleDateString('ko-KR')}`;
+	// 헤더 스크롤 축소 애니메이션
+	const header = document.querySelector('header');
+	let lastScrollY = window.scrollY;
+
+	window.addEventListener('scroll', () => {
+		const currentScroll = window.scrollY;
+		if (currentScroll > 50) {
+			header.style.padding = '10px 20px';
+			header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+		} else {
+			header.style.padding = '20px';
+			header.style.boxShadow = 'none';
+		}
+		lastScrollY = currentScroll;
+	});
 </script>
 </body>
 </html>
