@@ -3,57 +3,56 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>게이밍 스타일 포트폴리오</title>
+	<title>포트폴리오 이력서</title>
 	<style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+        .slides {
+            display: flex;
+            width: 300%;
+        }
+        .slides img {
+            flex: 0 0 100%;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #00ffcc;
-            --header-bg: linear-gradient(90deg, #0d0d0d, #1a1a1a);
-            --header-text: #ff00ff;
-            --post-bg: #111111;
-            --accent: #ff00ff;
-            --glow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --header-bg: #ffffff;
+            --header-text: #000000;
+            --post-bg: #f7f7f7;
+            --accent: #000000;
         }
 
         body.dark-mode {
-            --bg-color: #000000;
-            --text-color: #00ffff;
-            --header-bg: linear-gradient(90deg, #000000, #222222);
-            --header-text: #ff00ff;
-            --post-bg: #1a1a1a;
-            --accent: #ff00ff;
-            --glow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            --bg-color: #1e1e1e;
+            --text-color: #f5f5f5;
+            --header-bg: #111111;
+            --header-text: #ffffff;
+            --post-bg: #2a2a2a;
+            --accent: #ffffff;
         }
 
         body {
             margin: 0;
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            background-image:
-                    radial-gradient(circle at 20% 20%, rgba(255,0,255,0.1), transparent 70%),
-                    radial-gradient(circle at 80% 80%, rgba(0,255,255,0.1), transparent 70%);
-            background-repeat: no-repeat;
             transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background: var(--header-bg);
+            background-color: var(--header-bg);
             color: var(--header-text);
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            border-bottom: 1px solid #ccc;
         }
 
         .logo svg {
-            height: 36px;
+            height: 32px;
             fill: currentColor;
-            transition: fill 0.3s;
-            filter: drop-shadow(var(--glow));
         }
 
         .logo a {
@@ -67,70 +66,45 @@
             color: var(--header-text);
             margin-left: 20px;
             text-decoration: none;
-            font-weight: 600;
-            text-shadow: var(--glow);
+            font-weight: 500;
         }
 
         .profile-info {
             display: flex;
             align-items: center;
             gap: 20px;
-            padding: 30px;
+            padding: 40px;
             background-color: var(--post-bg);
             border-radius: 12px;
-            margin: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            margin: 40px 20px;
         }
 
         .profile-info img {
             border-radius: 8px;
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
-            box-shadow: var(--glow);
+        }
+
+        .profile-text {
+            flex: 1;
         }
 
         .contact p, .social-icons a {
-            text-shadow: var(--glow);
+            font-size: 14px;
+            margin: 4px 0;
         }
 
         .social-icons a {
             margin-right: 10px;
             text-decoration: none;
-            font-size: 16px;
             color: var(--text-color);
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent);
         }
 
         .slider {
-            max-width: 100%;
-            height: 300px;
+            display: block;
             overflow: hidden;
-        }
-
-        .slides {
-            display: flex;
-            width: 400%;
-            animation: slide 12s infinite ease-in-out;
-        }
-
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-100vw); }
-            50% { transform: translateX(-200vw); }
-            75% { transform: translateX(-300vw); }
-            100% { transform: translateX(0); }
-        }
-
-        .slides img {
-            width: 100vw;
-            height: 300px;
-            object-fit: cover;
-            filter: brightness(1.2) contrast(1.2);
+            margin: 0 auto 40px;
         }
 
         .content {
@@ -139,36 +113,31 @@
 
         .post {
             background: var(--post-bg);
-            margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,255,255,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .post:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255,0,255,0.4);
-        }
-
-        .post a {
+            margin-bottom: 20px;
+            padding: 20px;
             display: flex;
             gap: 20px;
-            text-decoration: none;
-            color: inherit;
-            padding: 20px;
+            align-items: flex-start;
+            border: 1px solid #ddd;
         }
 
         .post img {
-            width: 180px;
-            height: 120px;
+            width: 150px;
+            height: 100px;
             object-fit: cover;
             border-radius: 6px;
             flex-shrink: 0;
-            box-shadow: var(--glow);
         }
 
-        .post-text h3, .post-text p {
-            text-shadow: var(--glow);
+        .post-text h3 {
+            margin: 0 0 10px;
+        }
+
+        .post-text p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-color);
         }
 
         .dark-toggle {
@@ -176,27 +145,19 @@
             bottom: 20px;
             right: 20px;
             padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background: var(--accent);
-            color: #fff;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            border-radius: 4px;
             cursor: pointer;
-            box-shadow: 0 0 10px var(--accent);
         }
 
         @media (max-width: 768px) {
-            .slides img {
-                height: 200px;
-            }
             .profile-info {
                 flex-direction: column;
                 text-align: center;
             }
-            .profile-info img {
-                width: 100%;
-                height: auto;
-            }
-            .post a {
+            .post {
                 flex-direction: column;
             }
             .post img {
@@ -204,43 +165,23 @@
                 height: auto;
             }
         }
-        .custom-cursor {
-            cursor: url('https://cur.cursors-4u.net/games/gam-10/gam936.cur'), auto;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .neon-button {
-            background: none;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 16px;
-            font-size: 14px;
-            border-radius: 5px;
-            text-shadow: var(--glow);
-            box-shadow: var(--glow);
-            transition: all 0.3s ease;
-        }
-
-        .neon-button:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
-        }
-
-        audio {
-            position: fixed;
-            bottom: 70px;
-            right: 20px;
-            z-index: 999;
-            filter: drop-shadow(var(--glow));
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 	</style>
 </head>
-<body class="custom-cursor">
+<body>
+<button class="dark-toggle" onclick="toggleDarkMode()">🌗</button>
 <header>
 	<div class="logo">
-		<a href="#">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12l18-12v24z"/></svg>
-		</a>
+		<a href="#" style="font-weight: 600; font-size: 18px; color: var(--header-text); text-decoration: none;">South_Sea</a>
 	</div>
 	<nav>
 		<a href="#project1">프로젝트 1</a>
@@ -252,64 +193,142 @@
 <section class="profile-info">
 	<img src="profile.jpg" alt="프로필 사진">
 	<div class="profile-text">
-		<h2>게이머 네임</h2>
-		<p>풀스택 개발자 | 게임 UX/UI 디자이너</p>
+		<h2>홍길동</h2>
+		<p>풀스택 개발자 | 사용성 중심의 프론트엔드 설계자</p>
 		<div class="contact">
-			<p>📞 010-9999-8888</p>
-			<p>✉️ gamer@example.com</p>
-			<p>🐙 <a href="https://github.com/gamerhub" target="_blank">GitHub</a></p>
+			<p>📞 010-1234-5678</p>
+			<p>✉️ hong@example.com</p>
+			<p>📄 <a href="resume.pdf" target="_blank">이력서 다운로드</a></p>
 		</div>
 		<div class="social-icons">
-			<a href="https://github.com/gamerhub" target="_blank">🐱 GitHub</a>
-			<a href="https://twitch.tv/gamer" target="_blank">🎮 Twitch</a>
-			<a href="https://discord.gg/yourcode" target="_blank">💬 Discord</a>
+			<a href="https://github.com/hongdev" target="_blank">GitHub</a>
+			<a href="https://linkedin.com/in/hongdev" target="_blank">LinkedIn</a>
+			<a href="mailto:hong@example.com">Email</a>
 		</div>
 	</div>
 </section>
 
 <section class="slider">
 	<div class="slides">
-		<img src="game1.jpg" alt="게임 프로젝트 1">
-		<img src="game2.jpg" alt="게임 프로젝트 2">
-		<img src="game3.jpg" alt="게임 프로젝트 3">
-		<img src="game4.jpg" alt="게임 프로젝트 4">
+		<img src="slide1.jpg" alt="프로젝트 대표 이미지 1" style="width:100%; height:300px; object-fit:cover;">
+		<img src="slide2.jpg" alt="프로젝트 대표 이미지 2" style="width:100%; height:300px; object-fit:cover;">
+		<img src="slide3.jpg" alt="프로젝트 대표 이미지 3" style="width:100%; height:300px; object-fit:cover;">
 	</div>
 </section>
 
 <section class="content">
 	<div class="post">
-		<a href="project1.html">
-			<img src="thumb_game1.jpg" alt="프로젝트 썸네일 1">
-			<div class="post-text">
-				<h3>VR 리듬 게임</h3>
-				<p>유니티 기반 리듬액션 게임. 전신 트래킹과 비트 동기화 기술을 적용했습니다.</p>
-			</div>
-		</a>
+		<img src="thumb_resume1.jpg" alt="프로젝트 썸네일 1">
+		<div class="post-text">
+			<h3>내부 관리 시스템 구축</h3>
+			<p>사내 업무 효율화를 위한 CRUD 기반 웹앱 개발. React, Node.js, MongoDB 사용.</p>
+		</div>
 	</div>
 	<div class="post">
-		<a href="project2.html">
-			<img src="thumb_game2.jpg" alt="프로젝트 썸네일 2">
-			<div class="post-text">
-				<h3>게이머 소셜 플랫폼</h3>
-				<p>웹소켓 기반 실시간 파티 매칭 시스템과 음성 채팅 인터페이스 구현.</p>
-			</div>
-		</a>
+		<img src="thumb_resume2.jpg" alt="프로젝트 썸네일 2">
+		<div class="post-text">
+			<h3>고객 포털 리디자인</h3>
+			<p>사용자 경험 개선 중심의 프론트엔드 리디자인. Figma로 프로토타입 설계 후 Vue.js로 구현.</p>
+		</div>
+	</div>
+	<div class="post">
+		<img src="thumb_resume3.jpg" alt="프로젝트 썸네일 3">
+		<div class="post-text">
+			<h3>모바일 커머스 앱 개발</h3>
+			<p>React Native 기반 쇼핑 앱 제작. 사용자 인증, 결제 연동 및 푸시 알림 기능 구현.</p>
+		</div>
+	</div>
+	<div class="post">
+		<img src="thumb_resume4.jpg" alt="프로젝트 썸네일 4">
+		<div class="post-text">
+			<h3>실시간 채팅 시스템</h3>
+			<p>Socket.IO를 활용한 실시간 채팅 플랫폼 구축. 그룹 채팅, 알림, 이모지 지원.</p>
+		</div>
 	</div>
 </section>
 
-<div style="text-align: center; margin: 40px 0;">
-	<button class="neon-button" onclick="toggleDarkMode()">🌗 다크모드 전환</button>
-</div>
-<!-- 본문은 기존과 동일하게 유지됩니다. -->
-<audio controls loop>
-	<source src="https://filesamples.com/samples/audio/mp3/sample3.mp3" type="audio/mpeg">
-	브라우저가 오디오 태그를 지원하지 않습니다.
-</audio>
+<section class="content">
+	<h2>기술 스택</h2>
+	<ul>
+		<li>JavaScript (ES6+), TypeScript</li>
+		<li>React, Vue, Node.js, Express</li>
+		<li>MongoDB, MySQL</li>
+		<li>Git, GitHub, Docker</li>
+		<li>Figma, Adobe XD</li>
+	</ul>
+
+	<h2>교육</h2>
+	<ul>
+		<li>멋쟁이사자처럼 프론트엔드 스쿨 수료 (2023)</li>
+		<li>FastCampus 풀스택 부트캠프 (2022)</li>
+	</ul>
+
+	<h2>경력</h2>
+	<ul>
+		<li>ABC소프트웨어 (2023~현재) - 프론트엔드 개발자</li>
+		<li>XYZ 스타트업 (2021~2023) - 웹 퍼블리셔 & UI 디자이너</li>
+	</ul>
+</section>
 
 <script>
 	function toggleDarkMode() {
 		document.body.classList.toggle('dark-mode');
 	}
+	// 슬라이드 자동 전환
+	let currentSlide = 0;
+	const slides = document.querySelector('.slides');
+	const slideCount = slides.children.length;
+
+	setInterval(() => {
+		currentSlide = (currentSlide + 1) % slideCount;
+		slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+		slides.style.transition = 'transform 0.8s ease';
+	}, 4000);
+
+	// 프로젝트 필터링
+	const filterProjects = (keyword) => {
+		document.querySelectorAll('.post').forEach(post => {
+			const text = post.innerText.toLowerCase();
+			post.style.display = text.includes(keyword.toLowerCase()) ? 'flex' : 'none';
+		});
+	};
+
+	// 검색 필드 생성
+	const searchBar = document.createElement('input');
+	searchBar.placeholder = '프로젝트 검색...';
+	searchBar.style.margin = '20px';
+	searchBar.style.padding = '10px';
+	searchBar.style.width = 'calc(100% - 40px)';
+	searchBar.style.fontSize = '16px';
+	searchBar.style.border = '1px solid #ccc';
+	searchBar.addEventListener('input', e => filterProjects(e.target.value));
+
+	document.querySelector('.content').prepend(searchBar);
+
+	// 인쇄 최적화
+	const style = document.createElement('style');
+	style.media = 'print';
+	style.innerHTML = `
+    .dark-toggle, input[type="search"], .slider, nav { display: none !important; }
+    body { background: white !important; color: black !important; }
+    a { color: black !important; text-decoration: none !important; }
+    .post { page-break-inside: avoid; }
+  `;
+	document.head.appendChild(style);
+	// 스크롤 시 fade-in 효과
+	const fadeEls = document.querySelectorAll('.post, .profile-info, section.content');
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, { threshold: 0.1 });
+
+	fadeEls.forEach(el => {
+		el.classList.add('fade-in');
+		observer.observe(el);
+	});
 </script>
 </body>
 </html>
