@@ -34,14 +34,22 @@
             color: var(--header-text);
             padding: 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        header nav {
+            display: flex;
         }
 
         header nav a {
             color: var(--header-text);
-            margin: 10px;
+            margin-left: 20px;
             text-decoration: none;
         }
 
@@ -62,9 +70,9 @@
         }
 
         .profile-info img {
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
+            border-radius: 8px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             border: 3px solid #ccc;
         }
@@ -128,14 +136,21 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: background 0.3s;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
 
         .post img {
-            width: 100%;
-            height: 200px;
+            width: 200px;
+            height: 140px;
             object-fit: cover;
             border-radius: 6px;
-            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        .post-text {
+            flex: 1;
         }
 
         .dark-toggle {
@@ -160,14 +175,22 @@
                 text-align: center;
             }
             .profile-info img {
-                width: 100px;
-                height: 100px;
+                width: 100%;
+                height: auto;
+            }
+            .post {
+                flex-direction: column;
+            }
+            .post img {
+                width: 100%;
+                height: auto;
             }
         }
 	</style>
 </head>
 <body>
 <header>
+	<div class="logo"><a href="#" style="color: var(--header-text); text-decoration: none;">MyLogo</a></div>
 	<nav>
 		<a href="#project1">프로젝트 1</a>
 		<a href="#project2">프로젝트 2</a>
@@ -179,7 +202,7 @@
 	<img src="profile.jpg" alt="프로필 사진">
 	<div class="profile-text">
 		<h2>당신의 이름</h2>
-		<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
+		<p>개발자 | 포트폴리오 블로그</p>
 		<div class="contact">
 			<p>📞 전화번호: 010-1234-5678</p>
 			<p>✉️ 이메일: your.email@example.com</p>
@@ -205,13 +228,17 @@
 <div class="content">
 	<div class="post">
 		<img src="thumb1.jpg" alt="대표 이미지 1">
-		<h3>게시글 제목 1</h3>
-		<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
+		<div class="post-text">
+			<h3>게시글 제목 1</h3>
+			<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
+		</div>
 	</div>
 	<div class="post">
 		<img src="thumb2.jpg" alt="대표 이미지 2">
-		<h3>게시글 제목 2</h3>
-		<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
+		<div class="post-text">
+			<h3>게시글 제목 2</h3>
+			<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
+		</div>
 	</div>
 </div>
 
