@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>개인 포트폴리오 블로그</title>
+	<title>게이밍 스타일 포트폴리오</title>
 	<style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
@@ -204,9 +204,38 @@
                 height: auto;
             }
         }
+        .custom-cursor {
+            cursor: url('https://cur.cursors-4u.net/games/gam-10/gam936.cur'), auto;
+        }
+
+        .neon-button {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-shadow: var(--glow);
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+
+        .neon-button:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+        }
+
+        audio {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            z-index: 999;
+            filter: drop-shadow(var(--glow));
+        }
 	</style>
 </head>
-<body>
+<body class="custom-cursor">
 <header>
 	<div class="logo">
 		<a href="#">
@@ -220,55 +249,62 @@
 	</nav>
 </header>
 
-<div class="profile-info">
+<section class="profile-info">
 	<img src="profile.jpg" alt="프로필 사진">
 	<div class="profile-text">
-		<h2>당신의 이름</h2>
-		<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
+		<h2>게이머 네임</h2>
+		<p>풀스택 개발자 | 게임 UX/UI 디자이너</p>
 		<div class="contact">
-			<p>📞 전화번호: 010-1234-5678</p>
-			<p>✉️ 이메일: your.email@example.com</p>
-			<p>🐙 깃허브: <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
+			<p>📞 010-9999-8888</p>
+			<p>✉️ gamer@example.com</p>
+			<p>🐙 <a href="https://github.com/gamerhub" target="_blank">GitHub</a></p>
 		</div>
 		<div class="social-icons">
-			<a href="https://github.com/yourgithub" target="_blank">🐱 GitHub</a>
-			<a href="https://linkedin.com/in/yourlinkedin" target="_blank">💼 LinkedIn</a>
-			<a href="https://instagram.com/yourinsta" target="_blank">📸 Instagram</a>
+			<a href="https://github.com/gamerhub" target="_blank">🐱 GitHub</a>
+			<a href="https://twitch.tv/gamer" target="_blank">🎮 Twitch</a>
+			<a href="https://discord.gg/yourcode" target="_blank">💬 Discord</a>
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="slider">
+<section class="slider">
 	<div class="slides">
-		<img src="image1.jpg" alt="배너 이미지 1">
-		<img src="image2.jpg" alt="배너 이미지 2">
-		<img src="image3.jpg" alt="배너 이미지 3">
-		<img src="image4.jpg" alt="배너 이미지 4">
+		<img src="game1.jpg" alt="게임 프로젝트 1">
+		<img src="game2.jpg" alt="게임 프로젝트 2">
+		<img src="game3.jpg" alt="게임 프로젝트 3">
+		<img src="game4.jpg" alt="게임 프로젝트 4">
 	</div>
-</div>
+</section>
 
-<div class="content">
+<section class="content">
 	<div class="post">
-		<a href="post1.html">
-			<img src="thumb1.jpg" alt="대표 이미지 1">
+		<a href="project1.html">
+			<img src="thumb_game1.jpg" alt="프로젝트 썸네일 1">
 			<div class="post-text">
-				<h3>게시글 제목 1</h3>
-				<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
+				<h3>VR 리듬 게임</h3>
+				<p>유니티 기반 리듬액션 게임. 전신 트래킹과 비트 동기화 기술을 적용했습니다.</p>
 			</div>
 		</a>
 	</div>
 	<div class="post">
-		<a href="post2.html">
-			<img src="thumb2.jpg" alt="대표 이미지 2">
+		<a href="project2.html">
+			<img src="thumb_game2.jpg" alt="프로젝트 썸네일 2">
 			<div class="post-text">
-				<h3>게시글 제목 2</h3>
-				<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
+				<h3>게이머 소셜 플랫폼</h3>
+				<p>웹소켓 기반 실시간 파티 매칭 시스템과 음성 채팅 인터페이스 구현.</p>
 			</div>
 		</a>
 	</div>
-</div>
+</section>
 
-<button class="dark-toggle" onclick="toggleDarkMode()">🌙 다크모드</button>
+<div style="text-align: center; margin: 40px 0;">
+	<button class="neon-button" onclick="toggleDarkMode()">🌗 다크모드 전환</button>
+</div>
+<!-- 본문은 기존과 동일하게 유지됩니다. -->
+<audio controls loop>
+	<source src="https://filesamples.com/samples/audio/mp3/sample3.mp3" type="audio/mpeg">
+	브라우저가 오디오 태그를 지원하지 않습니다.
+</audio>
 
 <script>
 	function toggleDarkMode() {
