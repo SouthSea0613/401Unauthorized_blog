@@ -49,26 +49,44 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            padding: 20px;
+            padding: 30px;
             background-color: var(--post-bg);
-            text-align: left;
-            flex-wrap: wrap;
-            justify-content: center;
+            border-radius: 12px;
+            margin: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-info:hover {
+            transform: translateY(-5px);
         }
 
         .profile-info img {
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border: 3px solid #ccc;
         }
 
         .profile-text {
-            max-width: 500px;
+            flex: 1;
         }
 
         .contact {
             margin-top: 10px;
             font-size: 14px;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #007acc;
         }
 
         .slider {
@@ -112,6 +130,14 @@
             transition: background 0.3s;
         }
 
+        .post img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
         .dark-toggle {
             position: fixed;
             bottom: 20px;
@@ -134,11 +160,8 @@
                 text-align: center;
             }
             .profile-info img {
-                width: 80px;
-                height: 80px;
-            }
-            .profile-text {
-                max-width: 100%;
+                width: 100px;
+                height: 100px;
             }
         }
 	</style>
@@ -162,6 +185,11 @@
 			<p>✉️ 이메일: your.email@example.com</p>
 			<p>🐙 깃허브: <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
 		</div>
+		<div class="social-icons">
+			<a href="https://github.com/yourgithub" target="_blank">🐱 GitHub</a>
+			<a href="https://linkedin.com/in/yourlinkedin" target="_blank">💼 LinkedIn</a>
+			<a href="https://instagram.com/yourinsta" target="_blank">📸 Instagram</a>
+		</div>
 	</div>
 </div>
 
@@ -176,10 +204,12 @@
 
 <div class="content">
 	<div class="post">
+		<img src="thumb1.jpg" alt="대표 이미지 1">
 		<h3>게시글 제목 1</h3>
 		<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
 	</div>
 	<div class="post">
+		<img src="thumb2.jpg" alt="대표 이미지 2">
 		<h3>게시글 제목 2</h3>
 		<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
 	</div>
