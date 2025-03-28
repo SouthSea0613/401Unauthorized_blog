@@ -1,12 +1,182 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>개인 포트폴리오 블로그</title>
+	<style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --header-bg: #333;
+            --header-text: #fff;
+            --post-bg: #fff;
+        }
 
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #f5f5f5;
+            --header-bg: #111;
+            --header-text: #ddd;
+            --post-bg: #2a2a2a;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header nav a {
+            color: var(--header-text);
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--post-bg);
+            text-align: center;
+        }
+
+        .profile-info img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .slider {
+            position: relative;
+            max-width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 400%;
+            animation: slide 12s infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100vw); }
+            50% { transform: translateX(-200vw); }
+            75% { transform: translateX(-300vw); }
+            100% { transform: translateX(0); }
+        }
+
+        .slides img {
+            width: 100vw;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .post {
+            background: var(--post-bg);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background 0.3s;
+        }
+
+        .dark-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #444;
+            color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .slides img {
+                height: 200px;
+            }
+            .profile-info img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+	</style>
+</head>
 <body>
-    <h1>index.html</h1>
+<header>
+	<nav>
+		<a href="#project1">프로젝트 1</a>
+		<a href="#project2">프로젝트 2</a>
+		<a href="#project3">프로젝트 3</a>
+	</nav>
+</header>
+
+<div class="profile-info">
+	<img src="profile.jpg" alt="프로필 사진">
+	<h2>당신의 이름</h2>
+	<p>프론트엔드 개발자 | 포트폴리오 블로그</p>
+	<div class="contact">
+		<p>📞 전화번호: 010-1234-5678</p>
+		<p>✉️ 이메일: your.email@example.com</p>
+		<p>🐙 깃허브: <a href="https://github.com/yourgithub" target="_blank">github.com/yourgithub</a></p>
+	</div>
+</div>
+
+<div class="slider">
+	<div class="slides">
+		<img src="image1.jpg" alt="배너 이미지 1">
+		<img src="image2.jpg" alt="배너 이미지 2">
+		<img src="image3.jpg" alt="배너 이미지 3">
+		<img src="image4.jpg" alt="배너 이미지 4">
+	</div>
+</div>
+
+<div class="content">
+	<div class="post">
+		<h3>게시글 제목 1</h3>
+		<p>이곳은 첫 번째 게시글입니다. 포트폴리오에 대한 설명이나 블로그 형식의 글을 올릴 수 있습니다.</p>
+	</div>
+	<div class="post">
+		<h3>게시글 제목 2</h3>
+		<p>두 번째 게시글을 여기에 작성하세요. 개발 경험, 회고록, 공부한 내용을 정리할 수도 있습니다.</p>
+	</div>
+</div>
+
+<button class="dark-toggle" onclick="toggleDarkMode()">🌙 다크모드</button>
+
+<script>
+	function toggleDarkMode() {
+		document.body.classList.toggle('dark-mode');
+	}
+</script>
 </body>
 </html>
