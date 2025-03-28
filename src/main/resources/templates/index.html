@@ -282,8 +282,8 @@
 	setInterval(() => {
 		currentSlide = (currentSlide + 1) % slideCount;
 		slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-		slides.style.transition = 'transform 0.8s ease';
-	}, 4000);
+		slides.style.transition = 'transform 1.5s ease';
+	}, 6000);
 
 	// 프로젝트 필터링
 	const filterProjects = (keyword) => {
