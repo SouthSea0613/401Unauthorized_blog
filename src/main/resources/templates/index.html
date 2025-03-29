@@ -2,18 +2,41 @@
 <html lang="ko">
 <head>
 	<link rel="icon" type="image/png" href="favicon.png"/>
-	<meta name="description" content="홍길동의 프론트엔드 포트폴리오 이력서입니다. 프로젝트와 기술 스택, 경력을 확인하세요."/>
-	<meta property="og:title" content="홍길동 포트폴리오"/>
-	<meta property="og:description" content="프론트엔드 개발자 홍길동의 이력서와 프로젝트 모음."/>
+	<meta name="description" content="프론트엔드 개발자 김남해의 포트폴리오. 프로젝트, 기술 스택, 경력을 확인하고 연락주세요."/>
+	<meta property="og:title" content="김남해 프론트엔드 포트폴리오"/>
+	<meta property="og:description" content="사용성과 인터랙션을 중시하는 프론트엔드 개발자 김남해의 이력서와 프로젝트 모음집입니다."/>
 	<meta property="og:image" content="thumbnail.jpg"/>
 	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="YOUR_WEBSITE_URL_HERE"/>
 	<meta name="twitter:card" content="summary_large_image"/>
-	<meta name="twitter:title" content="홍길동 포트폴리오"/>
-	<meta name="twitter:description" content="프론트엔드 개발자 홍길동의 이력서와 프로젝트 모음."/>
+	<meta name="twitter:title" content="김남해 프론트엔드 포트폴리오"/>
+	<meta name="twitter:description" content="사용성과 인터랙션을 중시하는 프론트엔드 개발자 김남해의 이력서와 프로젝트 모음집입니다."/>
 	<meta name="twitter:image" content="thumbnail.jpg"/>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>포트폴리오 이력서</title>
+	<title>김남해 포트폴리오</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "김남해 포트폴리오",
+			"url": "YOUR_WEBSITE_URL_HERE",
+			"author": {
+				"@type": "Person",
+				"name": "김남해",
+				"jobTitle": "프론트엔드 개발자",
+				"email": "tksz0613@gmail.com",
+				"telephone": "+82-10-2895-7823",
+				"url": "YOUR_WEBSITE_URL_HERE"
+			}
+		}
+	</script>
+
 	<style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -25,6 +48,13 @@
             --post-bg: #f7f7f7;
             --accent: #000000;
             --overlay-bg: rgba(0, 0, 0, 0.6);
+            --modal-bg: #ffffff;
+            --modal-text: #111111;
+            --border-color: #ccc;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --link-color: #007bff;
+            --btn-text-color: #000000;
+            --btn-bg-color: #ffffff;
         }
 
         body.dark-mode {
@@ -34,6 +64,22 @@
             --header-text: #ffffff;
             --post-bg: #2a2a2a;
             --accent: #ffffff;
+            --modal-bg: #2a2a2a;
+            --modal-text: #f5f5f5;
+            --border-color: #444;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+            --link-color: #6bb8ff;
+            --btn-text-color: #ffffff;
+            --btn-bg-color: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
         }
 
         body {
@@ -42,25 +88,60 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
         }
 
-        body.menu-open {
+        body.menu-open, body.modal-open {
             overflow: hidden;
         }
 
-        /* Header */
+        /* Combined rule */
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible {
+            outline: 2px solid var(--link-color);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+
+        body.dark-mode a:focus-visible, body.dark-mode button:focus-visible, body.dark-mode [tabindex="0"]:focus-visible {
+            outline-color: var(--link-color);
+            box-shadow: 0 0 0 4px rgba(107, 184, 255, 0.3);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            filter: brightness(1.2);
+        }
+
         header {
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease;
             position: sticky;
             top: 0;
             z-index: 100;
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 20px;
+            padding: 15px 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo a {
@@ -69,13 +150,13 @@
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .logo svg {
             height: 32px;
             fill: currentColor;
-            margin-right: 8px; /* 로고와 텍스트 사이 간격 (필요시) */
+            margin-right: 8px;
         }
 
         header nav {
@@ -84,18 +165,38 @@
 
         header nav a {
             color: var(--header-text);
-            margin-left: 20px;
+            margin-left: 25px;
             text-decoration: none;
             font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
         }
 
-        /* Mobile Menu */
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
         .mobile-menu-toggle {
             display: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             z-index: 1002;
             color: var(--header-text);
+            background: none;
+            border: none;
+            padding: 5px;
         }
 
         .mobile-nav {
@@ -106,16 +207,17 @@
             right: 0;
             width: 280px;
             max-width: 80%;
-            height: 100%;
+            height: 100vh;
             background-color: var(--header-bg);
             color: var(--header-text);
             z-index: 1001;
-            padding: 60px 20px 20px;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            padding: 80px 25px 25px;
+            box-shadow: -3px 0 8px rgba(0, 0, 0, 0.15);
             transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            border-left: 1px solid #ccc;
+            transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border-left: 1px solid var(--border-color);
             box-sizing: border-box;
+            overflow-y: auto;
         }
 
         body.menu-open .mobile-nav {
@@ -131,8 +233,13 @@
             color: var(--header-text);
             text-decoration: none;
             font-size: 18px;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: opacity 0.2s ease;
+        }
+
+        .mobile-nav a:hover {
+            opacity: 0.7;
         }
 
         .mobile-nav a:last-child {
@@ -141,17 +248,18 @@
 
         .close-menu-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 28px;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
             background: none;
             border: none;
             color: var(--header-text);
             cursor: pointer;
             z-index: 1002;
+            padding: 5px;
+            line-height: 1;
         }
 
-        /* Overlay */
         .overlay {
             display: none;
             position: fixed;
@@ -165,28 +273,34 @@
             transition: opacity 0.3s ease-in-out;
         }
 
-        body.menu-open .overlay {
+        body.menu-open .overlay, body.modal-open .overlay {
             display: block;
             opacity: 1;
         }
 
-        /* Profile Section */
+        body.modal-open .overlay {
+            z-index: 1040;
+        }
+
         .profile-info {
             display: flex;
             align-items: center;
-            gap: 40px;
-            padding: 40px;
+            gap: 50px;
+            padding: 60px 40px;
             background-color: var(--post-bg);
-            border-radius: 12px;
-            margin: 40px 20px;
+            border-radius: 16px;
+            margin: 50px 25px;
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .profile-info img {
             aspect-ratio: 3 / 4;
-            width: auto;
-            height: 400px;
+            width: 350px;
+            height: calc(350px * 4 / 3);
             object-fit: cover;
             flex-shrink: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--shadow-color);
         }
 
         .profile-text {
@@ -197,44 +311,65 @@
         }
 
         .profile-text h2 {
-            font-size: 40px;
+            font-size: 44px;
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .profile-text > p {
-            font-size: 20px;
-            margin-bottom: 25px;
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.9;
         }
 
         .contact {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .contact p {
             font-size: 18px;
-            margin: 8px 0;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact p svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            fill: currentColor;
+            opacity: 0.8;
         }
 
         .contact p a {
-            font-size: 16px;
-            color: var(--text-color); /* 링크 색상 통일 (선택사항) */
-            text-decoration: underline; /* 링크 표시 (선택사항) */
+            font-size: 18px;
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .contact p a:hover {
+            text-decoration: underline;
         }
 
         .social-icons a {
-            margin-right: 15px;
+            margin-right: 18px;
             text-decoration: none;
             color: var(--text-color);
             font-size: 18px;
+            transition: opacity 0.2s ease;
         }
 
-        /* Slider Section */
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
+
         .slider {
             position: relative;
             display: block;
             overflow: hidden;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
             aspect-ratio: 16 / 9;
             width: 100%;
             max-width: 100%;
@@ -243,9 +378,9 @@
 
         .slides {
             display: flex;
-            width: 100%; /* Slides container width needs to be set implicitly by children */
+            width: 100%;
             height: 100%;
-            transition: transform 0.6s ease-in-out;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             will-change: transform;
         }
 
@@ -253,11 +388,10 @@
             position: relative;
             flex: 0 0 100%;
             height: 100%;
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .slide-item img {
-            display: block; /* Remove potential extra space below image */
+            display: block;
             width: 100%;
             height: 100%;
             aspect-ratio: 16 / 9;
@@ -266,63 +400,88 @@
 
         .slide-caption {
             position: absolute;
-            bottom: 20px;
-            left: 30px;
+            bottom: 25px;
+            left: 35px;
             color: white;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 18px 25px;
             border-radius: 8px;
-            max-width: calc(100% - 60px); /* Prevent caption overflow */
+            max-width: calc(100% - 70px);
         }
 
         .slide-caption h3 {
-            margin: 0 0 8px;
+            margin: 0 0 10px;
+            font-size: 1.4em;
         }
 
-        .slide-caption a {
+        .slide-caption .details-link { /* Style for the "자세히 보기" link */
             display: inline-block;
-            margin-top: 6px;
-            background: white;
-            color: black;
-            padding: 6px 12px;
-            font-size: 14px;
+            margin-top: 10px;
+            background: var(--btn-bg-color);
+            color: var(--btn-text-color);
+            padding: 9px 18px;
+            font-size: 15px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s, color 0.3s, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-caption .details-link:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .slide-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
             color: white;
-            font-size: 24px;
-            padding: 10px;
+            font-size: 28px;
+            padding: 12px;
             border: none;
             cursor: pointer;
             z-index: 10;
             transition: background-color 0.3s ease;
-        }
-        .slide-btn:hover {
-            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .slide-btn.prev { left: 10px; }
-        .slide-btn.next { right: 10px; }
+        .slide-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-btn.prev {
+            left: 15px;
+        }
+
+        .slide-btn.next {
+            right: 15px;
+        }
 
         .slide-indicators {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
-            padding: 5px 0; /* Add some padding */
+            margin-top: 15px;
+            padding: 5px 0;
         }
 
-        .indicator {
+        .indicator { /* Reverted style (no transform) */
             width: 12px;
             height: 12px;
             background: #ccc;
             border-radius: 50%;
-            margin: 0 5px;
+            margin: 0 6px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -331,86 +490,87 @@
             background: var(--accent);
         }
 
-        .slide-item.animate-in { opacity: 1; transform: translateX(0); }
-        .slide-item.animate-out { opacity: 0; transform: translateX(-10%); }
-
-        /* Content Post Section */
         .content {
-            padding: 0 20px; /* 좌우 패딩만 적용 */
+            padding: 0 25px;
         }
 
         #contentPostSection {
-            padding-top: 20px; /* 슬라이더와의 간격 */
+            padding-top: 30px;
         }
 
         .post {
             background: var(--post-bg);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            padding: 25px;
             display: flex;
-            gap: 20px;
+            gap: 25px;
             align-items: flex-start;
-            border: 1px solid #ddd;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* More specific transition */
-            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             color: inherit;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            cursor: pointer; /* Indicate clickable */
         }
 
         .post:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-4px);
+            box-shadow: 0 6px 15px var(--shadow-color);
+            transform: translateY(-5px);
         }
 
         .post img {
-            width: 150px;
-            height: 100px;
+            width: 180px;
+            height: 120px;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 8px;
             flex-shrink: 0;
         }
 
         .post-text {
-            flex: 1; /* Allow text to take remaining space */
+            flex: 1;
         }
 
         .post-text h3 {
-            margin: 0 0 10px;
+            margin: 0 0 12px;
+            font-size: 1.25em;
+            font-weight: 600;
         }
 
         .post-text p {
             margin: 0;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-color);
-            line-height: 1.5; /* Improve readability */
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
-        /* Dark Mode Toggle */
-        .dark-toggle {
+        .dark-toggle { /* Text button style */
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             padding: 10px 18px;
             font-size: 15px;
             font-weight: 600;
             border: 1px solid var(--accent);
-            background: transparent;
+            background: var(--bg-color);
             color: var(--accent);
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             z-index: 1003;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
+
         .dark-toggle:hover {
+            transform: scale(1.05);
             background-color: var(--accent);
             color: var(--bg-color);
         }
 
-        /* Scroll Fade-in Effect */
         .js-scroll-fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         .js-scroll-fade-in.is-visible {
@@ -418,22 +578,27 @@
             transform: translateY(0);
         }
 
-        /* Footer & Resume Sections */
         footer {
             background: var(--post-bg);
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            font-size: 14px;
-            border-top: 1px solid #ccc;
+            padding: 40px 25px;
+            margin-top: 80px;
+            font-size: 15px;
+            border-top: 1px solid var(--border-color);
         }
 
         .resume-section {
-            margin-bottom: 40px;
-            padding: 0 20px; /* Add padding consistent with .content */
+            margin-bottom: 45px;
+            padding: 0 25px;
+            text-align: left;
         }
+
         .resume-section h2 {
-            margin-bottom: 15px; /* Add space below headings */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            display: inline-block;
         }
 
         .resume-section ul {
@@ -443,8 +608,8 @@
         }
 
         .resume-section ul li {
-            margin-bottom: 8px;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            line-height: 1.7;
         }
 
         .two-column {
@@ -457,105 +622,443 @@
             flex: 1;
             min-width: 250px;
         }
-        footer .content { /* Footer 내의 content 패딩 제거 */
+
+        footer .content {
             padding: 0;
         }
-        footer .resume-section { /* Footer 내 resume 섹션 마진/패딩 조정 */
-            margin-bottom: 20px;
+
+        footer .resume-section {
+            margin-bottom: 25px;
             padding: 0;
         }
+
         footer p {
-            margin: 8px 0; /* Footer 내 문단 간격 조정 */
+            margin: 10px 0;
         }
+
         footer a {
-            color: var(--text-color);
+            color: var(--link-color);
         }
 
-        /* Media Queries */
+        #contactSection {
+            padding: 50px 25px;
+            background-color: var(--post-bg);
+            margin: 50px 0;
+        }
+
+        #contactSection h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--link-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+        }
+
+        #formStatus {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Modal Styles (Re-added) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.is-open {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--modal-bg);
+            color: var(--modal-text);
+            margin: auto;
+            padding: 30px 40px;
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 700px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideInModal 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .modal-close-btn {
+            color: var(--modal-text);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            opacity: 1;
+        }
+
+        .modal h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-body p, .modal-body ul {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            list-style: disc;
+            padding-left: 25px;
+        }
+
+        @keyframes slideInModal {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
         @media (max-width: 768px) {
-            header nav { display: none; }
-            .mobile-menu-toggle { display: block; }
+            header {
+                padding: 15px;
+            }
 
-            .slider { aspect-ratio: auto; height: auto; margin-bottom: 30px;}
-            .slide-caption { font-size: 13px; padding: 8px 12px; bottom: 10px; left: 10px; max-width: calc(100% - 20px); }
-            .slide-caption a { font-size: 12px; padding: 5px 10px; }
-            .slide-indicators { margin-top: 5px;}
-            .indicator {width: 10px; height: 10px; margin: 0 4px;}
+            header nav {
+                display: none;
+            }
 
+            .mobile-menu-toggle {
+                display: block;
+            }
 
-            .profile-info { flex-direction: column; align-items: center; text-align: center; padding: 30px 20px; gap: 25px; margin: 30px 15px; }
-            .profile-info img { width: 80%; max-width: 300px; height: auto; aspect-ratio: 3 / 4; }
-            .profile-text h2 { font-size: 32px; margin-bottom: 15px; }
-            .profile-text > p { font-size: 18px; margin-bottom: 20px; }
-            .contact { margin-bottom: 20px; }
-            .contact p { font-size: 16px; margin: 6px 0; }
-            .contact p a { font-size: 14px; }
-            .social-icons a { margin-right: 12px; font-size: 16px; }
+            .slider {
+                aspect-ratio: auto;
+                height: auto;
+                margin-bottom: 30px;
+            }
 
-            .content { padding: 0 15px; }
-            #contentPostSection { padding-top: 15px;}
+            .slide-caption {
+                font-size: 13px;
+                padding: 10px 15px;
+                bottom: 15px;
+                left: 15px;
+                max-width: calc(100% - 30px);
+            }
 
-            .post { flex-direction: column; align-items: center; text-align: center; padding: 15px; }
-            .post img { width: 90%; max-width: 250px; height: auto; margin-bottom: 15px; }
-            .post-text h3 { font-size: 18px;}
-            .post-text p { font-size: 13px; }
+            .slide-caption .details-link {
+                font-size: 13px;
+                padding: 7px 14px;
+            }
 
-            .two-column { flex-direction: column; gap: 0;} /* 모바일 세로 정렬 */
-            .two-column ul { margin-bottom: 20px;}
+            .slide-indicators {
+                margin-top: 8px;
+            }
 
-            .resume-section { padding: 0 15px; }
+            .indicator {
+                width: 10px;
+                height: 10px;
+                margin: 0 4px;
+            }
 
-            .js-scroll-fade-in { transform: translateY(15px); }
-            .js-scroll-fade-in.is-visible { transform: translateY(0); }
+            .slide-btn {
+                font-size: 22px;
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+            }
+
+            .slide-btn.prev {
+                left: 10px;
+            }
+
+            .slide-btn.next {
+                right: 10px;
+            }
+
+            .profile-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 30px 20px;
+                gap: 25px;
+                margin: 30px 15px;
+            }
+
+            .profile-info img {
+                width: 80%;
+                max-width: 300px;
+                height: auto;
+                aspect-ratio: 3 / 4;
+            }
+
+            .profile-text h2 {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+
+            .profile-text > p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .contact {
+                margin-bottom: 20px;
+            }
+
+            .contact p {
+                font-size: 16px;
+                margin: 8px 0;
+                justify-content: center;
+            }
+
+            .contact p a {
+                font-size: 16px;
+            }
+
+            .social-icons {
+                margin-top: 10px;
+            }
+
+            .social-icons a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .content {
+                padding: 0 15px;
+            }
+
+            #contentPostSection {
+                padding-top: 20px;
+            }
+
+            .post {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .post img {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+                margin-bottom: 15px;
+            }
+
+            .post-text h3 {
+                font-size: 1.15em;
+            }
+
+            .post-text p {
+                font-size: 14px;
+            }
+
+            .two-column {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .two-column ul {
+                margin-bottom: 25px;
+            }
+
+            .resume-section {
+                padding: 0 15px;
+                margin-bottom: 35px;
+            }
+
+            .resume-section h2 {
+                font-size: 1.6em;
+            }
+
+            .js-scroll-fade-in {
+                transform: translateY(20px);
+            }
+
+            .js-scroll-fade-in.is-visible {
+                transform: translateY(0);
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 25px;
+                max-height: 80vh;
+            }
+
+            .modal h3 {
+                font-size: 1.5em;
+            }
+
+            .modal-close-btn {
+                font-size: 28px;
+                top: 10px;
+                right: 15px;
+            }
+
+            #contactSection {
+                padding: 40px 15px;
+                margin: 40px 0;
+            }
+
+            #contactSection h2 {
+                font-size: 1.8em;
+            }
+
+            .form-group input, .form-group textarea {
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            .dark-toggle {
+                padding: 8px 15px;
+                font-size: 14px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
 	</style>
 </head>
 <body>
 
-<button class="dark-toggle" onclick="toggleDarkMode()">다크모드</button>
+<h1 class="visually-hidden">김남해 프론트엔드 개발자 포트폴리오</h1>
+
+<button class="dark-toggle" aria-label="테마 전환" onclick="toggleDarkMode()">다크 모드</button>
 
 <header>
 	<div class="logo">
 		<a href="/">South_Sea</a>
 	</div>
-	<nav id="desktopNav"></nav>
-	<div class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</div>
-	<div class="mobile-nav" id="mobileNavContainer">
-		<button class="close-menu-btn" onclick="toggleMobileMenu()">×</button>
+	<nav id="desktopNav" aria-label="메인 네비게이션"></nav>
+	<button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="메뉴 열기/닫기" aria-expanded="false"
+			aria-controls="mobileNavContainer">☰
+	</button>
+	<div class="mobile-nav" id="mobileNavContainer" aria-hidden="true">
 		<div id="mobileNavLinks"></div>
 	</div>
 </header>
 
 <main>
-	<section class="profile-info js-scroll-fade-in">
-		<img src="image/profile.jpg" alt="프로필 사진">
+	<section class="profile-info js-scroll-fade-in" id="profile">
+		<img src="image/profile.jpg" alt="김남해 프로필 사진">
 		<div class="profile-text">
 			<h2>김남해</h2>
 			<p>풀스택 개발자 | 사용성 중심의 프론트엔드 설계자</p>
 			<div class="contact">
-				<p>📞 010-2895-7823</p>
-				<p>✉️ tksz0613@gmail.com</p>
-				<p>📄 <a href="resume.pdf" target="_blank">이력서 다운로드</a></p>
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18">
+						<path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6l-39.7 47.6c-54-29.4-99.4-74.9-128.8-128.8l47.6-39.7c13.7-11.2 18.4-30 11.6-46.3l-40-96z"
+							  fill="currentColor"/>
+					</svg>
+					010-2895-7823
+				</p>
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18">
+						<path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+							  fill="currentColor"/>
+					</svg>
+					<a href="mailto:tksz0613@gmail.com">tksz0613@gmail.com</a></p>
+				<p>📄 <a href="resume.pdf" target="_blank" download="김남해_이력서.pdf">이력서 다운로드</a></p>
 			</div>
 			<div class="social-icons">
-				<a href="https://github.com/SouthSea0613" target="_blank">GitHub</a>
-				<a href="mailto:tksz0613@gmail.com">Email</a>
+				<a href="https://github.com/SouthSea0613" target="_blank" aria-label="GitHub 프로필">GitHub</a>
+				<a href="mailto:tksz0613@gmail.com" aria-label="이메일 보내기">Email</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="slider js-scroll-fade-in">
-		<button class="slide-btn prev" onclick="moveSlide(-1)">‹</button>
-		<div class="slides" id="slidesContainer"></div>
-		<button class="slide-btn next" onclick="moveSlide(1)">›</button>
-		<div class="slide-indicators" id="indicators"></div>
+	<section class="slider js-scroll-fade-in" id="projects" aria-roledescription="carousel" aria-label="주요 프로젝트 슬라이더">
+		<button class="slide-btn prev" onclick="handleSliderInteraction(moveSlide, -1)" aria-label="이전 슬라이드">‹</button>
+		<div class="slides" id="slidesContainer" aria-live="polite"></div>
+		<button class="slide-btn next" onclick="handleSliderInteraction(moveSlide, 1)" aria-label="다음 슬라이드">›</button>
+		<div class="slide-indicators" id="indicators" role="tablist" aria-label="슬라이드 네비게이션"></div>
 	</section>
 
-	<section class="content" id="contentPostSection">
-	</section>
+	<section class="content" id="contentPostSection" aria-label="추가 프로젝트 및 포스트"></section>
 
 	<section class="content">
-		<div class="resume-section js-scroll-fade-in">
+		<div class="resume-section js-scroll-fade-in" id="skills">
 			<h2>기술 스택</h2>
 			<div class="two-column">
 				<ul>
@@ -564,19 +1067,19 @@
 					<li><strong>데이터베이스:</strong> MongoDB, MySQL</li>
 				</ul>
 				<ul>
-					<li><strong>도구:</strong> Git, GitHub, Docker</li>
-					<li><strong>디자인:</strong> Figma, Adobe XD</li>
+					<li><strong>도구:</strong> Git, GitHub, Docker, Figma, Adobe XD</li>
+					<li><strong>기타:</strong> Web Accessibility, Responsive Design</li>
 				</ul>
 			</div>
 		</div>
-		<div class="resume-section js-scroll-fade-in">
+		<div class="resume-section js-scroll-fade-in" id="education">
 			<h2>교육</h2>
 			<ul>
 				<li><strong>멋쟁이사자처럼 프론트엔드 스쿨 수료</strong> (2023)</li>
 				<li><strong>FastCampus 풀스택 부트캠프</strong> (2022)</li>
 			</ul>
 		</div>
-		<div class="resume-section js-scroll-fade-in">
+		<div class="resume-section js-scroll-fade-in" id="experience">
 			<h2>경력</h2>
 			<ul>
 				<li><strong>ABC소프트웨어</strong> (2023~현재) - 프론트엔드 개발자</li>
@@ -584,20 +1087,45 @@
 			</ul>
 		</div>
 	</section>
+
+	<section id="contactSection" class="js-scroll-fade-in" aria-labelledby="contactHeading">
+		<h2 id="contactHeading">연락하기</h2>
+		<form class="contact-form" id="contactForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST">
+			<div class="form-group">
+				<label for="name">이름</label>
+				<input type="text" id="name" name="name" required>
+			</div>
+			<div class="form-group">
+				<label for="email">이메일</label>
+				<input type="email" id="email" name="email" required>
+			</div>
+			<div class="form-group">
+				<label for="message">메시지</label>
+				<textarea id="message" name="message" required></textarea>
+			</div>
+			<button type="submit" class="submit-btn">메시지 보내기</button>
+			<div id="formStatus"></div>
+		</form>
+	</section>
+
 </main>
 
 <footer class="js-scroll-fade-in">
-	<p>&copy; 2024 홍길동. All rights reserved.</p>
+	<p>&copy; <span id="copyrightYear"></span> 김남해. All rights reserved.</p>
 	<p>“경험은 최고의 스승이다.”</p>
-	<p><a href="mailto:hong@example.com">hong@example.com</a></p>
-	<p id="last-updated"></p>
+	<p><a href="mailto:tksz0613@gmail.com">tksz0613@gmail.com</a></p>
+	<p id="last-updated">Last Updated: <span id="updateDate"></span></p>
 	<section class="content">
 		<div class="resume-section">
 			<h2>버전 관리</h2>
 			<ul>
-				<li><strong>v1.0</strong> - 초기 이력서 레이아웃 구성 (2024.03)</li>
-				<li><strong>v1.1</strong> - 프로젝트 추가, 모바일 메뉴 도입, 다크모드 기능 (2024.03)</li>
-				<li><strong>v1.2</strong> - 인쇄 최적화 및 스크롤 애니메이션 효과 적용 (2024.03)</li>
+				<li><strong>v1.0</strong> - 초기 이력서 레이아웃 구성 (2025.03)</li>
+				<li><strong>v1.1</strong> - 프로젝트 추가, 모바일 메뉴 도입, 다크모드 기능 (2025.03)</li>
+				<li><strong>v1.2</strong> - 인쇄 최적화 및 스크롤 애니메이션 효과 적용 (2025.03)</li>
+				<li><strong>v1.3</strong> - 데이터 정규화 및 동적 컨텐츠 생성 (2025.03)</li>
+				<li><strong>v1.4</strong> - UX, 성능, 접근성 개선 및 상세 모달 추가 (2025.03)</li>
+				<li><strong>v1.5</strong> - 모달 제거, 스타일 및 기능 일부 되돌리기/개선 (2025.03)</li>
+				<li><strong>v1.6</strong> - 콘텐츠 포스트 모달 재추가 및 스타일 수정 (2025.03)</li>
 			</ul>
 		</div>
 		<div class="resume-section">
@@ -608,61 +1136,204 @@
 	</section>
 </footer>
 
-<div class="overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+<div class="modal" id="projectModal" aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+	<div class="modal-content">
+		<button class="modal-close-btn" onclick="closeModal()" aria-label="닫기">&times;</button>
+		<h3 id="modalTitle"></h3>
+		<div class="modal-body" id="modalBody">
+		</div>
+	</div>
+</div>
+
+<div class="overlay" id="menuOverlay"></div>
+
 
 <script>
-	// --- Data Definitions ---
 	const projects = [
-		{ id: 'project1', title: '프로젝트 1', sliderTitle: '포트폴리오 시스템', sliderImage: 'image/slide1.png', altText: '슬라이드 1' },
-		{ id: 'project2', title: '프로젝트 2', sliderTitle: '고객 포털 플랫폼', sliderImage: 'slide2.jpg', altText: '슬라이드 2' },
-		{ id: 'project3', title: '프로젝트 3', sliderTitle: '모바일 커머스', sliderImage: 'slide3.jpg', altText: '슬라이드 3' }
+		{
+			id: 'project1',
+			title: '프로젝트 1',
+			sliderTitle: '포트폴리오 시스템',
+			sliderImage: 'image/slide1.png',
+			altText: '포트폴리오 시스템 웹사이트 메인 화면'
+		},
+		{
+			id: 'project2',
+			title: '프로젝트 2',
+			sliderTitle: '고객 포털 플랫폼',
+			sliderImage: 'slide2.jpg',
+			altText: '고객 포털 플랫폼 대시보드 스크린샷'
+		},
+		{
+			id: 'project3',
+			title: '프로젝트 3',
+			sliderTitle: '모바일 커머스 앱',
+			sliderImage: 'slide3.jpg',
+			altText: '모바일 커머스 앱 상품 목록 화면'
+		}
 	];
 
 	const contentPosts = [
-		{ href: '#', target: '_blank', imageSrc: 'thumb_resume1.jpg', altText: '프로젝트 썸네일 1', title: '내부 관리 시스템 구축', description: '사내 업무 효율화를 위한 CRUD 기반 웹앱 개발. React, Node.js, MongoDB 사용.' },
-		{ href: '#', target: '_self', imageSrc: 'thumb_resume2.jpg', altText: '프로젝트 썸네일 2', title: '고객 포털 리디자인', description: '사용자 경험 개선 중심의 프론트엔드 리디자인. Figma로 프로토타입 설계 후 Vue.js로 구현.' },
-		{ href: '#', target: '_self', imageSrc: 'thumb_resume3.jpg', altText: '프로젝트 썸네일 3', title: '모바일 커머스 앱 개발', description: 'React Native 기반 쇼핑 앱 제작. 사용자 인증, 결제 연동 및 푸시 알림 기능 구현.' },
-		{ href: '#', target: '_self', imageSrc: 'thumb_resume4.jpg', altText: '프로젝트 썸네일 4', title: '실시간 채팅 시스템', description: 'Socket.IO를 활용한 실시간 채팅 플랫폼 구축. 그룹 채팅, 알림, 이모지 지원.' }
+		{
+			href: '#',
+			target: '_blank',
+			imageSrc: 'thumb_resume1.jpg',
+			altText: '내부 관리 시스템 스크린샷',
+			title: '내부 관리 시스템 구축',
+			description: '사내 업무 효율화를 위한 CRUD 기반 웹앱 개발. React, Node.js, MongoDB 사용.',
+			details: '<p>사내 직원들이 사용하는 내부 관리 시스템입니다. React의 컴포넌트 기반 구조와 Node.js의 비동기 처리 능력을 활용하여 효율적인 시스템을 구축했습니다.</p>'
+		},
+		{
+			href: '#',
+			target: '_self',
+			imageSrc: 'thumb_resume2.jpg',
+			altText: '리디자인된 고객 포털 메인',
+			title: '고객 포털 리디자인',
+			description: '사용자 경험 개선 중심의 프론트엔드 리디자인. Figma로 프로토타입 설계 후 Vue.js로 구현.',
+			details: '<p>기존 고객 포털의 사용성을 분석하고 문제점을 도출하여 Figma로 개선된 프로토타입을 제작했습니다. 이후 Vue.js를 사용하여 인터랙티브하고 반응성 좋은 UI를 구현했습니다.</p>'
+		},
+		{
+			href: '#',
+			target: '_self',
+			imageSrc: 'thumb_resume3.jpg',
+			altText: '모바일 쇼핑 앱 결제 화면',
+			title: '모바일 커머스 앱 개발',
+			description: 'React Native 기반 쇼핑 앱 제작. 사용자 인증, 결제 연동 및 푸시 알림 기능 구현.',
+			details: '<p>React Native를 이용하여 iOS와 Android 모두에서 동작하는 쇼핑 앱을 개발했습니다. 사용자 경험을 고려한 네비게이션 구조와 상태 관리(Context API 또는 Redux)에 중점을 두었습니다.</p>'
+		},
+		{
+			href: '#',
+			target: '_self',
+			imageSrc: 'thumb_resume4.jpg',
+			altText: '실시간 채팅 화면 예시',
+			title: '실시간 채팅 시스템',
+			description: 'Socket.IO를 활용한 실시간 채팅 플랫폼 구축. 그룹 채팅, 알림, 이모지 지원.',
+			details: '<p>WebSocket 기반의 실시간 통신을 위해 Socket.IO 라이브러리를 사용했습니다. Node.js 백엔드와 연동하여 그룹 채팅방 생성, 메시지 전송/수신, 실시간 알림, 이모지 입력 등의 기능을 구현했습니다.</p>'
+		}
 	];
 
-	// --- Global Variables ---
 	let currentSlide = 0;
 	let slideItems = [];
 	let indicators = [];
 	let slideCount = 0;
-	let slidesContainer = null; // Slider DOM element
+	let slidesContainer = null;
+	let sliderAutoPlayInterval = null;
+	const autoPlayDelay = 5000;
 
-	// --- Helper & Logic Functions ---
+	const desktopNavEl = document.getElementById('desktopNav');
+	const mobileNavLinksEl = document.getElementById('mobileNavLinks');
+	const mobileMenuToggleBtn = document.querySelector('.mobile-menu-toggle');
+	const mobileNavContainer = document.getElementById('mobileNavContainer');
+	const slidesContainerEl = document.getElementById('slidesContainer');
+	const indicatorsContainerEl = document.getElementById('indicators');
+	const contentPostSectionEl = document.getElementById('contentPostSection');
+	const modalEl = document.getElementById('projectModal');
+	const modalTitleEl = document.getElementById('modalTitle');
+	const modalBodyEl = document.getElementById('modalBody');
+	const overlayEl = document.getElementById('menuOverlay');
+	const contactForm = document.getElementById('contactForm');
+	const formStatus = document.getElementById('formStatus');
+	const darkToggleBtn = document.querySelector('.dark-toggle');
+
 	function updateIndicators() {
 		if (!indicators || indicators.length === 0 || indicators.length !== slideCount) return;
-		indicators.forEach((indicator, idx) => indicator.classList.toggle('active', idx === currentSlide));
-	}
-
-	// Currently unused, but kept for potential future slide animations
-	function animateSlides() {
-		if (!slideItems || slideItems.length === 0) return;
-		slideItems.forEach((item, index) => {
-			item.classList.remove('animate-in', 'animate-out');
-			if (index === currentSlide) item.classList.add('animate-in');
+		indicators.forEach((indicator, idx) => {
+			indicator.setAttribute('aria-selected', idx === currentSlide ? 'true' : 'false');
+			indicator.setAttribute('tabindex', idx === currentSlide ? '0' : '-1');
+			indicator.classList.toggle('active', idx === currentSlide);
+		});
+		slideItems.forEach((slide, idx) => {
+			slide.setAttribute('aria-hidden', idx !== currentSlide ? 'true' : 'false');
+			slide.setAttribute('tabindex', idx === currentSlide ? '0' : '-1');
 		});
 	}
 
 	function moveSlide(direction) {
 		if (!slidesContainer || slideCount <= 1) return;
-		currentSlide = (currentSlide + direction + slideCount) % slideCount;
-		slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-		updateIndicators();
+		const newSlideIndex = (currentSlide + direction + slideCount) % slideCount;
+		goToSlide(newSlideIndex);
 	}
 
 	function goToSlide(index) {
-		if (!slidesContainer || index < 0 || index >= slideCount || slideCount <= 1) return;
+		if (!slidesContainer || index < 0 || index >= slideCount || slideCount <= 1 || index === currentSlide) return;
 		currentSlide = index;
 		slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 		updateIndicators();
 	}
 
-	function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
-	function toggleMobileMenu() { document.body.classList.toggle('menu-open'); }
+	function startSliderAutoPlay() {
+		if (slideCount <= 1 || sliderAutoPlayInterval) return;
+		sliderAutoPlayInterval = setInterval(() => moveSlide(1), autoPlayDelay);
+	}
+
+	function stopSliderAutoPlay() {
+		clearInterval(sliderAutoPlayInterval);
+		sliderAutoPlayInterval = null;
+	}
+
+	function handleSliderInteraction(action, ...args) {
+		stopSliderAutoPlay();
+		action(...args);
+	}
+
+	function toggleDarkMode() {
+		const body = document.body;
+		const isDarkMode = !body.classList.contains('dark-mode');
+		body.classList.toggle('dark-mode');
+		localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+		if (darkToggleBtn) {
+			darkToggleBtn.textContent = isDarkMode ? '라이트 모드' : '다크 모드';
+		}
+	}
+
+	function applySavedTheme() {
+		const savedTheme = localStorage.getItem('theme');
+		const body = document.body;
+		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		let currentThemeIsDark = false;
+		if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+			body.classList.add('dark-mode');
+			currentThemeIsDark = true;
+		} else {
+			body.classList.remove('dark-mode');
+			currentThemeIsDark = false;
+		}
+		if (darkToggleBtn) {
+			darkToggleBtn.textContent = currentThemeIsDark ? '라이트 모드' : '다크 모드';
+		}
+	}
+
+	function toggleMobileMenu() {
+		const isOpening = !document.body.classList.contains('menu-open');
+		document.body.classList.toggle('menu-open');
+		if (mobileMenuToggleBtn) mobileMenuToggleBtn.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
+		if (mobileNavContainer) mobileNavContainer.setAttribute('aria-hidden', isOpening ? 'false' : 'true');
+		if (isOpening && mobileNavContainer) {
+			mobileNavContainer.querySelector('a, button')?.focus();
+		} else if (mobileMenuToggleBtn) {
+			mobileMenuToggleBtn.focus();
+		}
+	}
+
+	function openModal(title, details) {
+		if (!modalEl || !modalTitleEl || !modalBodyEl) return;
+		modalTitleEl.textContent = title;
+		modalBodyEl.innerHTML = details;
+		modalEl.classList.add('is-open');
+		modalEl.setAttribute('aria-hidden', 'false');
+		document.body.classList.add('modal-open');
+		overlayEl.style.zIndex = '1040';
+		modalEl.querySelector('.modal-close-btn')?.focus();
+		stopSliderAutoPlay();
+	}
+
+	function closeModal() {
+		if (!modalEl) return;
+		modalEl.classList.remove('is-open');
+		modalEl.setAttribute('aria-hidden', 'true');
+		document.body.classList.remove('modal-open');
+		overlayEl.style.zIndex = '99';
+	}
 
 	function initializeScrollFadeIn() {
 		const scrollFadeInElements = document.querySelectorAll('.js-scroll-fade-in');
@@ -670,7 +1341,7 @@
 			if (scrollFadeInElements.length > 0) scrollFadeInElements.forEach(el => el.style.opacity = 1);
 			return;
 		}
-		const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+		const observerOptions = {root: null, rootMargin: '0px', threshold: 0.1};
 		const observerCallback = (entries, observer) => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
@@ -683,80 +1354,148 @@
 		scrollFadeInElements.forEach(el => scrollObserver.observe(el));
 	}
 
-	// --- Dynamic Element Generation Functions ---
 	function generateProjectElements(projectData) {
-		const desktopNavEl = document.getElementById('desktopNav');
-		const mobileNavLinksEl = document.getElementById('mobileNavLinks');
-		const slidesContainerEl = document.getElementById('slidesContainer');
-		const indicatorsContainerEl = document.getElementById('indicators');
-
-		if (!desktopNavEl || !mobileNavLinksEl || !slidesContainerEl || !indicatorsContainerEl) {
-			console.error("Required elements for project generation not found.");
-			return;
-		}
-		desktopNavEl.innerHTML = ''; mobileNavLinksEl.innerHTML = '';
-		slidesContainerEl.innerHTML = ''; indicatorsContainerEl.innerHTML = '';
+		if (!desktopNavEl || !mobileNavLinksEl || !slidesContainerEl || !indicatorsContainerEl) return;
+		desktopNavEl.innerHTML = '';
+		mobileNavLinksEl.innerHTML = '';
+		slidesContainerEl.innerHTML = '';
+		indicatorsContainerEl.innerHTML = '';
 
 		projectData.forEach((project, index) => {
 			const anchorHref = `#${project.id}`;
+
 			const desktopLink = document.createElement('a');
-			desktopLink.href = anchorHref; desktopLink.textContent = project.title;
+			desktopLink.href = anchorHref;
+			desktopLink.textContent = project.title;
 			desktopNavEl.appendChild(desktopLink);
 
 			const mobileLink = document.createElement('a');
-			mobileLink.href = anchorHref; mobileLink.textContent = project.title;
-			mobileLink.onclick = toggleMobileMenu; mobileNavLinksEl.appendChild(mobileLink);
+			mobileLink.href = anchorHref;
+			mobileLink.textContent = project.title;
+			mobileLink.onclick = toggleMobileMenu;
+			mobileNavLinksEl.appendChild(mobileLink);
 
 			const slideItem = document.createElement('div');
+			slideItem.id = `slide-${project.id}`;
 			slideItem.classList.add('slide-item');
-			slideItem.innerHTML = `<img src="${project.sliderImage}" alt="${project.altText}" /><div class="slide-caption"><h3>${project.sliderTitle}</h3><a href="${anchorHref}">자세히 보기</a></div>`;
+			slideItem.setAttribute('role', 'group');
+			slideItem.setAttribute('aria-roledescription', 'slide');
+			slideItem.setAttribute('aria-label', `${index + 1} / ${projectData.length}`);
+			slideItem.setAttribute('aria-hidden', index !== 0 ? 'true' : 'false');
+
+			const img = document.createElement('img');
+			img.src = project.sliderImage;
+			img.alt = project.altText;
+			img.loading = 'lazy';
+			img.decoding = 'async';
+			slideItem.appendChild(img);
+
+			const caption = document.createElement('div');
+			caption.classList.add('slide-caption');
+			const captionTitle = document.createElement('h3');
+			captionTitle.textContent = project.sliderTitle;
+			caption.appendChild(captionTitle);
+			const detailsLink = document.createElement('a');
+			detailsLink.href = anchorHref;
+			detailsLink.textContent = '자세히 보기';
+			detailsLink.classList.add('details-link');
+			caption.appendChild(detailsLink);
+			slideItem.appendChild(caption);
+
 			slidesContainerEl.appendChild(slideItem);
 
 			if (projectData.length > 1) {
-				const indicator = document.createElement('span');
+				const indicator = document.createElement('button');
 				indicator.classList.add('indicator');
+				indicator.setAttribute('role', 'tab');
+				indicator.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+				indicator.setAttribute('aria-controls', slideItem.id);
+				indicator.setAttribute('aria-label', `프로젝트 ${index + 1} 보기: ${project.sliderTitle}`);
+				indicator.setAttribute('tabindex', index === 0 ? '0' : '-1');
 				if (index === 0) indicator.classList.add('active');
-				indicator.onclick = () => goToSlide(index);
+				indicator.onclick = () => handleSliderInteraction(goToSlide, index);
 				indicatorsContainerEl.appendChild(indicator);
 			}
 		});
-		const prevButton = document.querySelector('.slide-btn.prev'); const nextButton = document.querySelector('.slide-btn.next');
-		const displayStyle = projectData.length <= 1 ? 'none' : 'block';
-		if (prevButton) prevButton.style.display = displayStyle; if (nextButton) nextButton.style.display = displayStyle;
+
+		const prevButton = document.querySelector('.slide-btn.prev');
+		const nextButton = document.querySelector('.slide-btn.next');
+		const displayStyle = projectData.length <= 1 ? 'none' : 'flex';
+		if (prevButton) prevButton.style.display = displayStyle;
+		if (nextButton) nextButton.style.display = displayStyle;
 	}
 
 	function generateContentPosts(postData) {
-		const sectionEl = document.getElementById('contentPostSection');
-		if (!sectionEl) {
-			console.error("Content post section not found.");
-			return;
-		}
-		sectionEl.innerHTML = '';
+		if (!contentPostSectionEl) return;
+		contentPostSectionEl.innerHTML = '';
 
 		postData.forEach(post => {
-			const postLink = document.createElement('a');
-			postLink.href = post.href;
-			postLink.target = post.target;
-			postLink.classList.add('post', 'js-scroll-fade-in');
+			const postContainer = document.createElement('div');
+			postContainer.classList.add('post', 'js-scroll-fade-in');
+			postContainer.setAttribute('role', 'button');
+			postContainer.setAttribute('tabindex', '0');
+			postContainer.onclick = () => openModal(post.title, post.details);
+			postContainer.onkeydown = (e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					openModal(post.title, post.details);
+				}
+			};
 
 			const img = document.createElement('img');
-			img.src = post.imageSrc; img.alt = post.altText;
-			postLink.appendChild(img);
+			img.src = post.imageSrc;
+			img.alt = post.altText;
+			img.loading = 'lazy';
+			img.decoding = 'async';
+			postContainer.appendChild(img);
 
 			const textDiv = document.createElement('div');
 			textDiv.classList.add('post-text');
 			const title = document.createElement('h3');
-			title.textContent = post.title; textDiv.appendChild(title);
+			title.textContent = post.title;
+			textDiv.appendChild(title);
 			const description = document.createElement('p');
-			description.textContent = post.description; textDiv.appendChild(description);
-			postLink.appendChild(textDiv);
+			description.textContent = post.description;
+			textDiv.appendChild(description);
+			postContainer.appendChild(textDiv);
 
-			sectionEl.appendChild(postLink);
+			contentPostSectionEl.appendChild(postContainer);
 		});
 	}
 
-	// --- Initialization on DOMContentLoaded ---
+	async function handleFormSubmit(event) {
+		event.preventDefault();
+		const form = event.target;
+		const data = new FormData(form);
+		if (formStatus) formStatus.textContent = '전송 중...';
+		if (formStatus) formStatus.style.color = 'var(--text-color)';
+		try {
+			const response = await fetch(form.action, {
+				method: form.method,
+				body: data,
+				headers: {'Accept': 'application/json'}
+			});
+			if (response.ok) {
+				if (formStatus) formStatus.textContent = '메시지가 성공적으로 전송되었습니다!';
+				if (formStatus) formStatus.style.color = 'green';
+				form.reset();
+			} else {
+				const responseData = await response.json();
+				if (Object.hasOwn(responseData, 'errors')) {
+					if (formStatus) formStatus.textContent = responseData["errors"].map(error => error["message"]).join(", ");
+				} else {
+					if (formStatus) formStatus.textContent = '메시지 전송에 실패했습니다. 잠시 후 다시 시도해주세요.';
+				}
+				if (formStatus) formStatus.style.color = 'red';
+			}
+		} catch (error) {
+			if (formStatus) formStatus.textContent = '메시지 전송 중 오류가 발생했습니다.';
+			if (formStatus) formStatus.style.color = 'red';
+		}
+	}
+
 	document.addEventListener('DOMContentLoaded', () => {
+		applySavedTheme();
 		generateProjectElements(projects);
 		generateContentPosts(contentPosts);
 
@@ -765,22 +1504,67 @@
 			slideItems = slidesContainer.querySelectorAll('.slide-item');
 			indicators = document.querySelectorAll('#indicators .indicator');
 			slideCount = slideItems.length;
-
 			if (slideCount > 0) {
 				slidesContainer.style.transform = `translateX(0%)`;
-				if (slideCount > 1) updateIndicators();
-
-				// Add touch event listeners only if there are slides
-				let startX = 0; let isDragging = false;
-				slidesContainer.addEventListener('touchstart', e => { if (slideCount <= 1) return; startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
-				slidesContainer.addEventListener('touchmove', e => { if (!isDragging || slideCount <= 1) return; }, { passive: true });
-				slidesContainer.addEventListener('touchend', e => { if (!isDragging || slideCount <= 1) return; isDragging = false; const endX = e.changedTouches[0].clientX; const diff = endX - startX; if (diff > 50) moveSlide(-1); else if (diff < -50) moveSlide(1); });
+				if (slideCount > 1) {
+					updateIndicators();
+					startSliderAutoPlay();
+					const sliderEl = document.querySelector('.slider');
+					if (sliderEl) {
+						sliderEl.addEventListener('mouseenter', stopSliderAutoPlay);
+						sliderEl.addEventListener('mouseleave', startSliderAutoPlay);
+						sliderEl.addEventListener('focusin', stopSliderAutoPlay);
+						sliderEl.addEventListener('focusout', startSliderAutoPlay);
+					}
+					let startX = 0;
+					let isDragging = false;
+					slidesContainer.addEventListener('touchstart', e => {
+						if (slideCount <= 1) return;
+						stopSliderAutoPlay();
+						startX = e.touches[0].clientX;
+						isDragging = true;
+					}, {passive: true});
+					slidesContainer.addEventListener('touchmove', e => {
+						if (!isDragging || slideCount <= 1) return;
+					}, {passive: true});
+					slidesContainer.addEventListener('touchend', e => {
+						if (!isDragging || slideCount <= 1) return;
+						isDragging = false;
+						const endX = e.changedTouches[0].clientX;
+						const diff = endX - startX;
+						if (diff > 50) handleSliderInteraction(moveSlide, -1); else if (diff < -50) handleSliderInteraction(moveSlide, 1);
+					}, {passive: true});
+				}
 			}
-		} else {
-			console.warn("Slides container not found during initialization.");
 		}
 
 		initializeScrollFadeIn();
+		if (contactForm) {
+			contactForm.addEventListener('submit', handleFormSubmit);
+		}
+
+		document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+		document.getElementById('updateDate').textContent = document.lastModified.split(' ')[0];
+
+		if (overlayEl) {
+			overlayEl.addEventListener('click', () => {
+				if (document.body.classList.contains('modal-open')) {
+					closeModal();
+				} else if (document.body.classList.contains('menu-open')) {
+					toggleMobileMenu();
+				}
+			});
+		}
+
+		window.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				if (document.body.classList.contains('modal-open')) {
+					closeModal();
+				} else if (document.body.classList.contains('menu-open')) {
+					toggleMobileMenu();
+				}
+			}
+		});
 	});
 </script>
 </body>
